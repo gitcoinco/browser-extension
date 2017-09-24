@@ -8,7 +8,12 @@ var web3account = function(){
     return localStorage['web3account'];
 }
 
+
 function timeDifference(current, previous) {
+
+    if(current<previous){
+        return "in " + timeDifference(previous, current).replace(" ago","")
+    }
 
     var msPerMinute = 60 * 1000;
     var msPerHour = msPerMinute * 60;
@@ -19,30 +24,38 @@ function timeDifference(current, previous) {
     var elapsed = current - previous;
 
     if (elapsed < msPerMinute) {
-         return Math.round(elapsed/1000) + ' seconds ago';   
+        var amt = Math.round(elapsed/1000);
+        var unit = 'second';
     }
 
     else if (elapsed < msPerHour) {
-         return Math.round(elapsed/msPerMinute) + ' minutes ago';   
+        var amt = Math.round(elapsed/msPerMinute);
+        var unit = 'minute';
     }
 
     else if (elapsed < msPerDay ) {
-         return Math.round(elapsed/msPerHour ) + ' hours ago';   
+        var amt = Math.round(elapsed/msPerHour );
+        var unit = 'hour';
     }
 
     else if (elapsed < msPerMonth) {
-        return Math.round(elapsed/msPerDay) + ' days ago';   
+        var amt = Math.round(elapsed/msPerDay);
+        var unit = 'day';
     }
 
     else if (elapsed < msPerYear) {
-        return Math.round(elapsed/msPerMonth) + ' months ago';   
+        var amt = Math.round(elapsed/msPerMonth);
+        var unit = 'month';
     }
 
     else {
-        return Math.round(elapsed/msPerYear ) + ' years ago';   
+        var amt = Math.round(elapsed/msPerYear);
+        var unit = 'year';
     }
-}
-
+    var plural = amt != 1 ? 's' : '';
+    
+    return amt + ' '+unit+plural+' ago';   
+};
 var addMessage = function(_class, msg, seconds=5000){
     var id = Math.floor((Math.random() * 1000000) + 1);
     var html = '<li id ="'+id+'" class="'+_class+'">'+msg+'</li>';
@@ -84,10 +97,10 @@ $(document).ready(function(){
         $('#balance').text(localStorage['ethbalance']);
     }
 
-    var bounties_api_url = 'http://localhost:8080/api/v0.1/bounties/?&order_by=web3_created';
+    var bounties_api_url = 'https://gitcoin.co/api/v0.1/bounties/?&order_by=web3_created';
     $.get(bounties_api_url,function(results){
         if(results.length == 0){
-            $("#openbounties").html('No Bounties Found');
+            $("#openbounties tbody").append('No Bounties Found');
         }
         var max_display = 10;
         for(var i=0; i<results.length && i<max_display; i++){
@@ -100,10 +113,10 @@ $(document).ready(function(){
                 </tr> \
                 ';
             $("#openbounties tbody").append(newHTML);
-            console.log($("openbounties tbody"));
         }
-        console.log(results);
-    });
+    }).error(function(){
+            $("#openbounties tbody").append('Error: Could not reach api.');
+    });;
 
     $("#bounty a").attr('href', 'https://gitcoin.co/bounty/new' + "?" + '&user=' + localStorage['githubusername'] + "&source=" + localStorage['browser_location']);
 
