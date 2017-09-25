@@ -6,7 +6,11 @@ Gitcoin pushes Open Source Forward.  Learn more at [https://gitcoin.co](https://
 
 # Chrome Extension
 
-When the project goes live, the chrome extension will be posted to this repo.
+The Chrome extension is live on the Google Chrome Store.  [Get it here](https://gitcoin.co/extension).
+
+<a href="https://gitcoin.co/extension">
+<img src="https://d3vv6lp55qjaqc.cloudfront.net/items/062d2k3t43040c2u2e2H/Image%202017-09-25%20at%204.12.56%20AM.png"/>
+</a>
 
 # Legal
 
