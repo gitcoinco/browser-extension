@@ -20,6 +20,18 @@ var addButtonToIssuePage = function(){
         element.appendChild(bounty_anchor);
 }
 
+var addButtonToUserPage = function(){
+        var element = document.getElementsByClassName('vcard-names')[0];
+        var bounty_anchor = document.createElement("A");
+
+        bounty_anchor.href = "https://gitcoin.co/tip?username=" + document.getElementsByClassName('p-nickname')[0].innerHTML;
+        bounty_anchor.className += "btn btn-sm btn-primary js-details-target gitcoin_bounty";
+        bounty_anchor.setAttribute("style", "position: absolute; top: -55px; right: 0px; background-color: #15003e; color: #25e899; background-image: linear-gradient(-180deg, #15003e 0%, #190032 90%)");
+        var text = document.createTextNode("+Tip");
+        bounty_anchor.appendChild(text);
+        element.appendChild(bounty_anchor);
+}
+
 var humanize = function(amount){
   if(amount > (100 * 1000)){
     return Math.round(amount/1000000,1) + "m";
