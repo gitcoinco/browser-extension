@@ -12,10 +12,10 @@ var setThumbnail = function(text){
 var addButtonToIssuePage = function(){
         var element = document.getElementsByClassName('issues-listing')[0];
         var bounty_anchor = document.createElement("A");
-        bounty_anchor.href = "https://gitcoin.co/bounty/new?source=" + document.location.href + "&user=" + document.getElementsByName('user-login')[0].content;
+        bounty_anchor.href = "https://gitcoin.co/funding/new?source=" + document.location.href + "&user=" + document.getElementsByName('user-login')[0].content;
         bounty_anchor.className += "btn btn-sm btn-primary js-details-target gitcoin_bounty";
         bounty_anchor.setAttribute("style", "position: absolute; top: -55px; right: 0px; background-color: #15003e; color: #25e899; background-image: linear-gradient(-180deg, #15003e 0%, #190032 90%)");
-        var text = document.createTextNode("+Bounty");
+        var text = document.createTextNode("+Fund Issue");
         bounty_anchor.appendChild(text);
         element.appendChild(bounty_anchor);
 }
@@ -68,7 +68,7 @@ var addButtonBountyAmount = function(amount,claimed,submittedByMe){
           css = css + "background-color: #15003e; background-image: linear-gradient(-180deg, #15003e 0%, #190032 90%); color: #25e899;";
         }
 
-        var href = "https://gitcoin.co/bounty/"+action+"?source=" + document.location.href + "&user=" + document.getElementsByName('user-login')[0].content;
+        var href = "https://gitcoin.co/funding/"+action+"?source=" + document.location.href + "&user=" + document.getElementsByName('user-login')[0].content;
         bounty_anchor.href = href;
         bounty_anchor.className += _class;
         bounty_anchor.setAttribute("style", css);

@@ -118,7 +118,7 @@ $(document).ready(function(){
             $("#openbounties tbody").append('Error: Could not reach api.');
     });;
 
-    $("#bounty a").attr('href', 'https://gitcoin.co/bounty/new' + "?" + '&user=' + localStorage['githubusername'] + "&source=" + localStorage['browser_location']);
+    $("#bounty a").attr('href', 'https://gitcoin.co/funding/new' + "?" + '&user=' + localStorage['githubusername'] + "&source=" + localStorage['browser_location']);
 
 });
 
