@@ -97,7 +97,7 @@ $(document).ready(function(){
         $('#balance').text(localStorage['ethbalance']);
     }
 
-    var bounties_api_url = 'https://gitcoin.co/api/v0.1/bounties/?idx_status=submitted&order_by=web3_created';
+    var bounties_api_url = 'https://gitcoin.co/api/v0.1/bounties/?idx_status=submitted&order_by=-web3_created';
     $.get(bounties_api_url,function(results){
         if(results.length == 0){
             $("#openbounties tbody").append('No Bounties Found');
@@ -105,9 +105,10 @@ $(document).ready(function(){
         var max_display = 10;
         for(var i=0; i<results.length && i<max_display; i++){
             var result = results[i];
+            var val = Math.round(100.0 * result['value_in_token']/10**18) / 100;
             var newHTML = '                <tr> \
                   <td>'+timeDifference(new Date(), new Date(result['web3_created']))+'</td> \
-                  <td>'+Math.round(result['value_in_token']/10**18)+' '+result['token_name']+'</td> \
+                  <td>'+val+' '+result['token_name']+'</td> \
                   <td>'+limitStr(result['title'],30)+'</td> \
                   <td><a target=_blank href="'+result['github_url']+'">View >></a></td> \
                 </tr> \
