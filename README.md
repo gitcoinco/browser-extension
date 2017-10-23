@@ -1,3 +1,5 @@
+[Update 10/19/2017 - We are looking for someone to do a chrome extension revamp](https://github.com/gitcoinco/chrome_ext/issues/2)
+
 <img src='https://d3vv6lp55qjaqc.cloudfront.net/items/263e3q1M2Y2r3L1X3c2y/helmet.png'/>
 
 # Gitcoin
