@@ -97,7 +97,7 @@ $(document).ready(function(){
         $('#balance').text(localStorage['ethbalance']);
     }
 
-    var bounties_api_url = 'https://gitcoin.co/api/v0.1/bounties/?idx_status=submitted&order_by=-web3_created';
+    var bounties_api_url = 'https://gitcoin.co/api/v0.1/bounties/?idx_status=open&order_by=-web3_created';
     $.get(bounties_api_url,function(results){
         if(results.length == 0){
             $("#openbounties tbody").append('No Bounties Found');
