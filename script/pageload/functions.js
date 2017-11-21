@@ -115,7 +115,7 @@ var injectGetNumberBounties = function(repoURL){
       };\
       if(typeof web3 != "undefined"){ \
         var bounty = web3.eth.contract(bounty_abi).at(bounty_address);\
-        bounty.getNumberBounties.call("'+repoURL+'", callback);\
+        bounty.getNumberBounties.call("'+encodeURI(repoURL)+'", callback);\
       } \
       ';
 
