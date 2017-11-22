@@ -8,6 +8,14 @@ var web3account = function(){
     return localStorage['web3account'];
 }
 
+var delay = (function(){
+  var timer = 0;
+  return function(callback, ms){
+    clearTimeout (timer);
+    timer = setTimeout(callback, ms);
+  };
+})();
+
 
 function timeDifference(current, previous) {
 
@@ -66,6 +74,15 @@ var addMessage = function(_class, msg, seconds=5000){
     setTimeout(callback, seconds);
 }
 
+getAllBounties = function(){
+  var bounties_api_url = 'https://gitcoin.co/api/v0.1/bounties/?idx_status=open&order_by=-web3_created';
+  var xmlHttp = new XMLHttpRequest();
+  xmlHttp.open( "GET", bounties_api_url, false ); // false for synchronous request
+  xmlHttp.send( null );
+  console.log('all Bounties', JSON.parse(xmlHttp.responseText))
+  return JSON.parse(xmlHttp.responseText);
+}
+
 var limitStr = function(str,len){
     if(str.length < len){
         return str;
@@ -73,8 +90,52 @@ var limitStr = function(str,len){
     return str.substring(0,len) + '...';
 }
 
+var appendTableNodes = function(bounties) {
+    $("#openbounties tbody").empty();
+    if(bounties.length == 0){
+        $("#openbounties tbody").append('No Bounties Found');
+    }
+    var max_display = 10;
+    for(var i=0; i<bounties.length && i<max_display; i++){
+        var bounty = bounties[i];
+        var val = Math.round(100.0 * bounty['value_in_token']/10**18) / 100;
+        var newHTML = '                <tr> \
+              <td>'+timeDifference(new Date(), new Date(bounty['web3_created']))+'</td> \
+              <td>'+val+' '+bounty['token_name']+'</td> \
+              <td>'+limitStr(bounty['title'],30)+'</td> \
+              <td><a target=_blank href="'+bounty['github_url']+'">View >></a></td> \
+            </tr> \
+            ';
+        $("#openbounties tbody").append(newHTML);
+    }
+}
+
+var all_bounties = getAllBounties();
+
+var searchBounties = function(keyword) {
+  keyword = keyword.toLowerCase();
+  console.log('starting')
+  var matching_bounties = []
+  for (var i = all_bounties.length - 1; i >= 0; i--) {
+    var title = all_bounties[i].title.toLowerCase();
+    if (title.indexOf(keyword) !== -1) {
+      matching_bounties.push(all_bounties[i])
+    }
+  }
+  console.log(matching_bounties, 'here are the matching bounties')
+  appendTableNodes(matching_bounties)
+}
+
 
 $(document).ready(function(){
+
+    $('#search_bar').keyup(function() {
+        delay(function() {
+            var keyword = document.getElementById('search_bar').value;
+            searchBounties(keyword);
+        }, 300)
+    })
+
     $('input[name=Tip]').click(function(){
         var username = $("input[name=username]").val()
         if (username == ""){
