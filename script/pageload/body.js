@@ -17,12 +17,15 @@ var body = function(){
     var isOnIssuePage = isOnGitHub && ( url.indexOf('/pull/') != -1 || url.indexOf('/issue/') != -1 || url.indexOf('/issues/') != -1 );
     var isAlreadyGitcoinBountyD = document.getElementsByClassName('gitcoin_bounty').length >= 1;
     
-    if(isOnUserProfile){
-        addButtonToUserPage();
-    }
+    console.log(url, "HERE IS THE PAGE URL")
+
+    // if(isOnUserProfile){
+    //     addButtonToUserPage();
+    // }
     if (isOnIssuePage){
         if (!isAlreadyGitcoinBountyD){
             addButtonToIssuePage();
+            addBountyInfoToIssuePage(url);
         }
         injectGetBountyAmount();
     } else if (isOnRepo){

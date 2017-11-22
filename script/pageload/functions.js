@@ -9,13 +9,22 @@ var setThumbnail = function(text){
     chrome.extension.sendMessage(text);
 };
 
+getAllBounties = function(){
+  var bounties_api_url = 'https://gitcoin.co/api/v0.1/bounties/?idx_status=open&order_by=-web3_created';
+  var xmlHttp = new XMLHttpRequest();
+  xmlHttp.open( "GET", bounties_api_url, false ); // false for synchronous request
+  xmlHttp.send( null );
+  console.log('all Bounties', JSON.parse(xmlHttp.responseText))
+  return JSON.parse(xmlHttp.responseText);
+}
+
 var addButtonToIssuePage = function(){
         var element = document.getElementsByClassName('issues-listing')[0];
         var bounty_anchor = document.createElement("A");
         bounty_anchor.href = "https://gitcoin.co/funding/new?source=" + document.location.href + "&user=" + document.getElementsByName('user-login')[0].content;
         bounty_anchor.className += "btn btn-sm btn-primary js-details-target gitcoin_bounty";
-        bounty_anchor.setAttribute("style", "position: absolute; top: -55px; right: 0px; background-color: #15003e; color: #25e899; background-image: linear-gradient(-180deg, #15003e 0%, #190032 90%)");
-        var text = document.createTextNode("+Fund Issue");
+        bounty_anchor.setAttribute("style", "position: absolute; top: 3px; right: 155px;");
+        var text = document.createTextNode("+ Fund Issue");
         bounty_anchor.appendChild(text);
         element.appendChild(bounty_anchor);
 }
@@ -30,6 +39,20 @@ var addButtonToUserPage = function(){
         var text = document.createTextNode("+Tip");
         bounty_anchor.appendChild(text);
         element.appendChild(bounty_anchor);
+}
+
+var addBountyInfoToIssuePage = function(url) {
+  var all_bounties = getAllBounties();
+  for (var i = all_bounties.length - 1; i >= 0; i--) {
+    if (all_bounties[i].github_url === url) {
+      console.log(all_bounties[i], 'THIS IS A GITCOIN ISSUE')
+      var bounty_anchor = document.getElementsByClassName('gitcoin_bounty')[0];
+      var bounty_eth_value = all_bounties[i].value_true;
+      var bounty_usdt_value = all_bounties[i].value_in_usdt;
+      var text = document.createTextNode(`   $${bounty_usdt_value} · ${bounty_eth_value} ETH`);
+      bounty_anchor.appendChild(text)
+    }
+  }
 }
 
 var humanize = function(amount){
