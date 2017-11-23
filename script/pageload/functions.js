@@ -10,7 +10,7 @@ var setThumbnail = function(text){
 };
 
 getAllBounties = function(){
-  var bounties_api_url = 'https://gitcoin.co/api/v0.1/bounties/?idx_status=open&order_by=-web3_created';
+  var bounties_api_url = 'https://gitcoin.co/api/v0.1/bounties/?order_by=-web3_created';
   var xmlHttp = new XMLHttpRequest();
   xmlHttp.open( "GET", bounties_api_url, false ); // false for synchronous request
   xmlHttp.send( null );
