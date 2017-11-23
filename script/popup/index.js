@@ -64,6 +64,7 @@ function timeDifference(current, previous) {
     
     return amt + ' '+unit+plural+' ago';   
 };
+
 var addMessage = function(_class, msg, seconds=5000){
     var id = Math.floor((Math.random() * 1000000) + 1);
     var html = '<li id ="'+id+'" class="'+_class+'">'+msg+'</li>';
@@ -114,15 +115,16 @@ var all_bounties = getAllBounties();
 
 var searchBounties = function(keyword) {
   keyword = keyword.toLowerCase();
-  console.log('starting')
   var matching_bounties = []
   for (var i = all_bounties.length - 1; i >= 0; i--) {
-    var title = all_bounties[i].title.toLowerCase();
-    if (title.indexOf(keyword) !== -1) {
+    var bounty_keywords = JSON.parse(all_bounties[i].raw_data[8]).issueKeywords.toLowerCase();
+    var bounty_title = all_bounties[i].title.toLowerCase();
+    var do_keywords_contain = bounty_keywords.indexOf(keyword) !== -1;
+    var does_title_contain = bounty_title.indexOf(keyword) !== -1;
+    if (do_keywords_contain || does_title_contain) {
       matching_bounties.push(all_bounties[i])
     }
   }
-  console.log(matching_bounties, 'here are the matching bounties')
   appendTableNodes(matching_bounties)
 }
 
@@ -133,7 +135,7 @@ $(document).ready(function(){
         delay(function() {
             var keyword = document.getElementById('search_bar').value;
             searchBounties(keyword);
-        }, 300)
+        }, 500)
     })
 
     $('input[name=Tip]').click(function(){
