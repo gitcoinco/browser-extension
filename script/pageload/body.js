@@ -11,7 +11,7 @@ var body = function(){
         setThumbnail('');
     }
 
-    var isOnUserProfile = isOnGitHub && url.match(/.+\/.+\/?/gi) != null;
+    var isOnUserProfile = isOnGitHub && url.match(/.+\/.+\/?/gi) != null && document.getElementById("report-block-modal");
     var isOnProfile = isOnGitHub && url.match(/.+\/.+\/.+\/?/gi) != null;
     var isOnRepo = isOnGitHub && url.match(/.+\/.+\/.+\/.+\/?/gi) != null;
     var isOnIssuePage = isOnGitHub && ( url.indexOf('/pull/') != -1 || url.indexOf('/issue/') != -1 || url.indexOf('/issues/') != -1 );
@@ -20,9 +20,9 @@ var body = function(){
     
     console.log(url, "HERE IS THE PAGE URL!!", isOnIssuesPage, isOnRepo, isOnGitHub)
 
-    // if(isOnUserProfile){
-    //     addButtonToUserPage();
-    // }
+    if(isOnUserProfile){
+        addButtonToUserPage();
+    }
     if (isOnIssuePage){
         if (!isAlreadyGitcoinBountyD){
             addButtonToIssuePage();
