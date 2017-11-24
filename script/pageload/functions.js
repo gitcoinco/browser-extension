@@ -119,9 +119,13 @@ var addButtonToUserPage = function(){
         var bounty_anchor = document.createElement("A");
 
         bounty_anchor.href = "https://gitcoin.co/tip?username=" + document.getElementsByClassName('p-nickname')[0].innerHTML;
-        bounty_anchor.className += "btn btn-sm btn-primary js-details-target gitcoin_bounty";
-        bounty_anchor.setAttribute("style", "background-color: #15003e; color: #25e899; background-image: linear-gradient(-180deg, #15003e 0%, #190032 90%)");
-        var text = document.createTextNode("+Tip");
+        bounty_anchor.className += "btn btn-block btn-primary js-details-target gitcoin_bounty";
+        bounty_anchor.setAttribute("style", "display: flex; flex-direction: row; flex-wrap: wrap; align-items: center; height: 34px; justify-content: center; align-content: center;");
+        var gitcoin_logo = document.createElement("img");
+        gitcoin_logo.src = "https://avatars1.githubusercontent.com/u/30044474?v=4";
+        gitcoin_logo.setAttribute("style", "width: 22px;") 
+        var text = document.createTextNode("Tip User");
+        bounty_anchor.appendChild(gitcoin_logo);
         bounty_anchor.appendChild(text);
         element.appendChild(bounty_anchor);
 }
