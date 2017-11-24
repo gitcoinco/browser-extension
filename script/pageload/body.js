@@ -17,6 +17,7 @@ var body = function(){
     var isOnIssuePage = isOnGitHub && ( url.indexOf('/pull/') != -1 || url.indexOf('/issue/') != -1 || url.indexOf('/issues/') != -1 );
     var isOnIssuesPage = isOnGitHub && url.indexOf('/issues') != -1;
     var isAlreadyGitcoinBountyD = document.getElementsByClassName('gitcoin_bounty').length >= 1;
+    var isOnIssueBoard = isOnGitHub && url.indexOf('boards') != -1;
     
     console.log(url, "HERE IS THE PAGE URL!!", isOnIssuesPage, isOnRepo, isOnGitHub)
 
@@ -38,6 +39,13 @@ var body = function(){
     if (isOnIssuesPage) {
         console.log('on issues page!!')
         injectGetAllBountiesOnIssuesPage();
+    }
+    if (isOnIssueBoard) {
+        console.log('on issues board!!')
+        setTimeout(function() {
+           document.addEventListener('DOMNodeInserted', injectGetAllBountiesOnIssueBoard); 
+        }, 5000)
+        
     }
 }
 
