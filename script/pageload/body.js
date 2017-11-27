@@ -42,7 +42,10 @@ var body = function(){
     }
     if (isOnIssueBoard) {
         console.log('on issues board!!')
-        injectGetAllBountiesOnIssueBoard(); 
+        setTimeout(function() {
+         injectGetAllBountiesOnIssueBoard()); 
+        }, 5000)
+        
     }
 }
 
