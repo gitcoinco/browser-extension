@@ -43,7 +43,7 @@ var body = function(){
     if (isOnIssueBoard) {
         console.log('on issues board!!')
         setTimeout(function() {
-         injectGetAllBountiesOnIssueBoard()); 
+         injectGetAllBountiesOnIssueBoard(); 
         }, 5000)
         
     }
