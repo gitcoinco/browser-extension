@@ -1,4 +1,5 @@
 chrome.extension.onMessage.addListener(function(message, sender) {
+    console.log(message, 'HERE IS A MESSAGE')
     if(typeof message == 'string'){
       chrome.browserAction.setBadgeBackgroundColor({
           color: '#15003e'

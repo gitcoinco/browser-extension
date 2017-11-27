@@ -42,10 +42,7 @@ var body = function(){
     }
     if (isOnIssueBoard) {
         console.log('on issues board!!')
-        setTimeout(function() {
-           document.addEventListener('DOMNodeInserted', injectGetAllBountiesOnIssueBoard); 
-        }, 5000)
-        
+        injectGetAllBountiesOnIssueBoard(); 
     }
 }
 
