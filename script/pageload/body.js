@@ -25,10 +25,10 @@ var body = function(){
         addButtonToUserPage();
     }
     if (isOnIssuePage){
-        if (!isAlreadyGitcoinBountyD){
+        // if (!isAlreadyGitcoinBountyD){
             addButtonToIssuePage();
             addBountyInfoToIssuePage(url);
-        }
+        // }
         injectGetBountyAmount();
     } else if (isOnRepo){
         var repoUrl = document.location.href.split('issues')[0].split('pulls')[0];
@@ -37,15 +37,12 @@ var body = function(){
         injectGetTotalBounties();
     } 
     if (isOnIssuesPage) {
-        console.log('on issues page!!')
         injectGetAllBountiesOnIssuesPage();
     }
     if (isOnIssueBoard) {
-        console.log('on issues board!!')
-        setTimeout(function() {
-         injectGetAllBountiesOnIssueBoard(); 
-        }, 5000)
-        
+        setInterval(function() {
+            injectGetAllBountiesOnIssueBoard(); 
+        }, 2500)
     }
 }
 

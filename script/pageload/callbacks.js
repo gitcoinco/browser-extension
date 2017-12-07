@@ -5,7 +5,7 @@ injectScript('function respond_to_ext(type, response) { window.postMessage({ typ
 //inject listening callbacks
 callbacks = [
     function(event){
-        //console.log("Stored " + event.data.type + ', ' + event.data.text);
+        console.log("Stored " + event.data.type + ', ' + event.data.text);
     },
     function(event){
         document[event.data.type] = event.data.text;
