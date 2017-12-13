@@ -7,6 +7,12 @@ var isweb3unlocked = function(){
 var web3account = function(){
     return localStorage['web3account'];
 }
+var url = localStorage['browser_location'];
+var isOnGitHubcom = url.indexOf('://github.com') != -1 && url.indexOf('://github.com') < 15;
+var isOnRepo = isOnGitHubcom && url.match(/.+\/.+\/.+\/.+\/?/gi) != null;
+console.log(isOnGitHubcom, isOnRepo, 'where you at?')
+
+
 
 
 function timeDifference(current, previous) {
@@ -68,7 +74,7 @@ var addMessage = function(_class, msg, seconds=5000){
 }
 
 getAllBounties = function(){
-  var bounties_api_url = 'https://gitcoin.co/api/v0.1/bounties/?order_by=-web3_created';
+  var bounties_api_url = 'https://gitcoin.co/api/v0.1/bounties/?order_by=web3_created&idx_status=open&network=mainnet';
   var xmlHttp = new XMLHttpRequest();
   xmlHttp.open( "GET", bounties_api_url, false ); // false for synchronous request
   xmlHttp.send( null );
@@ -120,6 +126,13 @@ var searchBounties = function(keyword) {
   }
   appendTableNodes(matching_bounties)
 }
+
+if (isOnGitHubcom && isOnRepo) {
+    var repo = localStorage['browser_location'].split('/')[4]
+    console.log(repo, 'repo')
+    searchBounties(repo);
+}
+
 
 
 $(document).ready(function(){
