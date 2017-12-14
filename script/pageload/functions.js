@@ -283,23 +283,11 @@ var injectGetBountyAmount = function(){
 
 var injectGetNumberBounties = function(repoURL) {
   var repoKeyword = window.location.href.split('/')[4]
-  console.log(repoKeyword, 'repoKeyword')
   var bounties = getBountiesForKeyword(repoKeyword);
-  var numBounties;
-  if (bounties.length === 0) {
-    console.log(bounties, 'check')
-     numBounties= "";
-  } else {
-    numBounties = bounties.length;
-  }
-  console.log(bounties, "IYBIUBKUNKBKHBKHBVKV")
+  var numBounties = bounties.length;
   setTimeout(function() {
     var injectThisCode = `
-      if ("${numBounties}" == "" ) {
-        numBounties = 0;
-      } else {
-        var numBounties = ${numBounties};
-      }
+      numBounties =` + numBounties + `
       respond_to_ext("numBounties", numBounties);
     `;
     injectScript(injectThisCode);
