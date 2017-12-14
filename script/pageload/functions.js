@@ -40,8 +40,9 @@ getBountiesForKeyword = function(keyword) {
   for (var i = all_bounties.length - 1; i >= 0; i--) {
     var bounty_keywords = JSON.parse(all_bounties[i].raw_data[8]).issueKeywords.toLowerCase();
     var bounty_title = all_bounties[i].title.toLowerCase();
+    var does_title_contain = bounty_title.indexOf(keyword) !== -1;
     var do_keywords_contain = bounty_keywords.indexOf(keyword) !== -1;
-    if (do_keywords_contain) {
+    if (do_keywords_contain || does_title_contain) {
       matching_bounties.push(all_bounties[i])
     }
   }
