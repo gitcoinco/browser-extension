@@ -22,13 +22,30 @@ getAllBounties = function(){
   return JSON.parse(xmlHttp.responseText);
 }
 
-getABounty = function(github_url) {
+getBountiesForRepo = function(github_url) {
   var bounties_api_url = "https://gitcoin.co/api/v0.1/bounties/?github_url=" + github_url;
   var xmlHttp = new XMLHttpRequest();
   xmlHttp.open( "GET", bounties_api_url, false ); // false for synchronous request
   xmlHttp.send( null );
-  console.log('all Bounties', JSON.parse(xmlHttp.responseText))
   return JSON.parse(xmlHttp.responseText);
+} 
+
+getBountiesForKeyword = function(keyword) {
+  var bounties_api_url = "https://gitcoin.co/api/v0.1/bounties/?order_by=web3_created&network=mainnet&idx_status=open";
+  var xmlHttp = new XMLHttpRequest();
+  xmlHttp.open( "GET", bounties_api_url, false ); // false for synchronous request
+  xmlHttp.send( null );
+  var all_bounties = JSON.parse(xmlHttp.responseText);
+  matching_bounties = [];
+  for (var i = all_bounties.length - 1; i >= 0; i--) {
+    var bounty_keywords = JSON.parse(all_bounties[i].raw_data[8]).issueKeywords.toLowerCase();
+    var bounty_title = all_bounties[i].title.toLowerCase();
+    var do_keywords_contain = bounty_keywords.indexOf(keyword) !== -1;
+    if (do_keywords_contain) {
+      matching_bounties.push(all_bounties[i])
+    }
+  }
+  return matching_bounties;
 } 
 
 injectGetAllBountiesOnIssuesPage = function(){
@@ -145,7 +162,7 @@ var addButtonToUserPage = function(){
 }
 
 var addBountyInfoToIssuePage = function(url) {
-  var all_bounties = getABounty(url);
+  var all_bounties = getBountiesForRepo(url);
   console.log('all bounties', all_bounties)
   var bounty_anchor = document.getElementsByClassName('gitcoin_bounty')[0];
   // bounty_anchor = "https://gitcoin.co/funding/details?url=" + url;
@@ -244,23 +261,48 @@ var injectGetBountyAmount = function(){
       injectScript(injectGetBalance);
     }, 1000);
 }
-var injectGetNumberBounties = function(repoURL){
-    setTimeout(function(){
-      var injectThisCode = ' \
-      var bounty_abi = '+bountyABI+' \
-      var bounty_address = "'+bountyAddress+'"; \
-      var callback = function(error, result){\
-          var numBounties = result.toNumber(); \
-          respond_to_ext("numBounties", numBounties);\
-      };\
-      if(typeof web3 != "undefined"){ \
-        var bounty = web3.eth.contract(bounty_abi).at(bounty_address);\
-        bounty.getNumberBounties.call("'+repoURL+'", callback);\
-      } \
-      ';
+// var injectGetNumberBounties = function(repoURL){
+//     setTimeout(function(){
+//       var injectThisCode = ' \
+//       var bounty_abi = '+bountyABI+' \
+//       var bounty_address = "'+bountyAddress+'"; \
+//       var callback = function(error, result){\
+//           var numBounties = result.toNumber(); \
+//           respond_to_ext("numBounties", numBounties);\
+//       };\
+//       if(typeof web3 != "undefined"){ \
+//         var bounty = web3.eth.contract(bounty_abi).at(bounty_address);\
+//         bounty.getNumberBounties.call("'+repoURL+'", callback);\
+//       } \
+//       ';
 
-      injectScript(injectThisCode);
-    }, 1000);
+//       injectScript(injectThisCode);
+//     }, 1000);
+// }
+
+var injectGetNumberBounties = function(repoURL) {
+  var repoKeyword = window.location.href.split('/')[4]
+  console.log(repoKeyword, 'repoKeyword')
+  var bounties = getBountiesForKeyword(repoKeyword);
+  var numBounties;
+  if (bounties.length === 0) {
+    console.log(bounties, 'check')
+     numBounties= "";
+  } else {
+    numBounties = bounties.length;
+  }
+  console.log(bounties, "IYBIUBKUNKBKHBKHBVKV")
+  setTimeout(function() {
+    var injectThisCode = `
+      if ("${numBounties}" == "" ) {
+        numBounties = 0;
+      } else {
+        var numBounties = ${numBounties};
+      }
+      respond_to_ext("numBounties", numBounties);
+    `;
+    injectScript(injectThisCode);
+  }, 1000);
 }
 
 var injectGetTotalBounties = function(){
