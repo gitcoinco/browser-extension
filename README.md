@@ -1,5 +1,3 @@
-[Update 10/19/2017 - We are looking for someone to do a chrome extension revamp](https://github.com/gitcoinco/chrome_ext/issues/2)
-
 <img src='https://d3vv6lp55qjaqc.cloudfront.net/items/263e3q1M2Y2r3L1X3c2y/helmet.png'/>
 
 # Gitcoin
@@ -9,6 +7,22 @@ Gitcoin pushes Open Source Forward.  Learn more at [https://gitcoin.co](https://
 [Star](https://github.com/gitcoinco/chrome_ext/stargazers) and [watch](https://github.com/gitcoinco/chrome_ext/watchers) this github repository to stay up to date, we're pushing new code several times per week!
 
 # Chrome Extension
+
+## Browse Work Directly on Github
+<img src=“readme/browse_on_github.png”>
+
+## Filter Available Work from Github
+<img src=“readme/filter_available_work.png”>
+
+## Fund Work Directly on Github
+<img src=“readme/fund.png”>
+
+## Tip Users Direclty on Github
+<img src=“readme/tip.png”>
+
+
+
+# Get It Today
 
 The Chrome extension is live on the Google Chrome Store.  [Get it here](https://gitcoin.co/extension).
 
