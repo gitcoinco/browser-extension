@@ -7,6 +7,12 @@ var isweb3unlocked = function(){
 var web3account = function(){
     return localStorage['web3account'];
 }
+var url = localStorage['browser_location'];
+var isOnGitHubcom = url.indexOf('://github.com') != -1 && url.indexOf('://github.com') < 15;
+var isOnRepo = isOnGitHubcom && url.match(/.+\/.+\/.+\/.+\/?/gi) != null;
+console.log(isOnGitHubcom, isOnRepo, 'where you at?')
+
+
 
 
 function timeDifference(current, previous) {
@@ -56,6 +62,7 @@ function timeDifference(current, previous) {
     
     return amt + ' '+unit+plural+' ago';   
 };
+
 var addMessage = function(_class, msg, seconds=5000){
     var id = Math.floor((Math.random() * 1000000) + 1);
     var html = '<li id ="'+id+'" class="'+_class+'">'+msg+'</li>';
@@ -66,6 +73,15 @@ var addMessage = function(_class, msg, seconds=5000){
     setTimeout(callback, seconds);
 }
 
+getAllBounties = function(){
+  var bounties_api_url = 'https://gitcoin.co/api/v0.1/bounties/?order_by=web3_created&idx_status=open&network=mainnet';
+  var xmlHttp = new XMLHttpRequest();
+  xmlHttp.open( "GET", bounties_api_url, false ); // false for synchronous request
+  xmlHttp.send( null );
+  console.log('all Bounties', JSON.parse(xmlHttp.responseText))
+  return JSON.parse(xmlHttp.responseText);
+}
+
 var limitStr = function(str,len){
     if(str.length < len){
         return str;
@@ -73,8 +89,59 @@ var limitStr = function(str,len){
     return str.substring(0,len) + '...';
 }
 
+var appendTableNodes = function(bounties) {
+    $("#openbounties tbody").empty();
+    if(bounties.length == 0){
+        $("#openbounties tbody").append('No Bounties Found');
+    }
+    var max_display = 10;
+    for(var i=0; i<bounties.length && i<max_display; i++){
+        var bounty = bounties[i];
+        var val = Math.round(100.0 * bounty['value_in_token']/10**18) / 100;
+        var newHTML = '                <tr> \
+              <td>'+timeDifference(new Date(), new Date(bounty['web3_created']))+'</td> \
+              <td>'+val+' '+bounty['token_name']+'</td> \
+              <td>'+limitStr(bounty['title'],30)+'</td> \
+              <td><a target=_blank href="'+bounty['github_url']+'">View >></a></td> \
+            </tr> \
+            ';
+        $("#openbounties tbody").append(newHTML);
+    }
+}
+
+var all_bounties = getAllBounties();
+
+var searchBounties = function(keyword) {
+  keyword = keyword.toLowerCase();
+  var matching_bounties = []
+  for (var i = all_bounties.length - 1; i >= 0; i--) {
+    var bounty_keywords = JSON.parse(all_bounties[i].raw_data[8]).issueKeywords.toLowerCase();
+    var bounty_title = all_bounties[i].title.toLowerCase();
+    var do_keywords_contain = bounty_keywords.indexOf(keyword) !== -1;
+    var does_title_contain = bounty_title.indexOf(keyword) !== -1;
+    if (do_keywords_contain || does_title_contain) {
+      matching_bounties.push(all_bounties[i])
+      localStorage.setItem('keyword', keyword)
+    }
+  }
+  appendTableNodes(matching_bounties)
+}
+
+if (isOnGitHubcom && isOnRepo) {
+    var repo = localStorage['browser_location'].split('/')[4]
+    console.log(repo, 'repo')
+    searchBounties(repo);
+}
+
+
 
 $(document).ready(function(){
+
+    $('.search-button').click(function() {
+        var keyword = document.getElementById('search_bar').value;
+        searchBounties(keyword)
+    })
+
     $('input[name=Tip]').click(function(){
         var username = $("input[name=username]").val()
         if (username == ""){
@@ -102,18 +169,24 @@ $(document).ready(function(){
         if(results.length == 0){
             $("#openbounties tbody").append('No Bounties Found');
         }
-        var max_display = 10;
-        for(var i=0; i<results.length && i<max_display; i++){
-            var result = results[i];
-            var val = Math.round(100.0 * result['value_in_token']/10**18) / 100;
-            var newHTML = '                <tr> \
-                  <td>'+timeDifference(new Date(), new Date(result['web3_created']))+'</td> \
-                  <td>'+val+' '+result['token_name']+'</td> \
-                  <td>'+limitStr(result['title'],30)+'</td> \
-                  <td><a target=_blank href="'+result['github_url']+'">View >></a></td> \
-                </tr> \
-                ';
-            $("#openbounties tbody").append(newHTML);
+        if (localStorage['keyword']) {
+            searchBounties(localStorage['keyword'])
+            var keyword = document.getElementById('search_bar').value = localStorage['keyword'];
+        }
+        else {
+            var max_display = 10;
+            for(var i=0; i<results.length && i<max_display; i++){
+                var result = results[i];
+                var val = Math.round(100.0 * result['value_in_token']/10**18) / 100;
+                var newHTML = '                <tr> \
+                      <td>'+timeDifference(new Date(), new Date(result['web3_created']))+'</td> \
+                      <td>'+val+' '+result['token_name']+'</td> \
+                      <td>'+limitStr(result['title'],30)+'</td> \
+                      <td><a target=_blank href="'+result['github_url']+'">View >></a></td> \
+                    </tr> \
+                    ';
+                $("#openbounties tbody").append(newHTML);
+            }
         }
     }).error(function(){
             $("#openbounties tbody").append('Error: Could not reach api.');

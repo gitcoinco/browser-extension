@@ -11,25 +11,38 @@ var body = function(){
         setThumbnail('');
     }
 
-    var isOnUserProfile = isOnGitHub && url.match(/.+\/.+\/?/gi) != null;
+    var isOnUserProfile = isOnGitHub && url.match(/.+\/.+\/?/gi) != null && document.getElementById("report-block-modal");
     var isOnProfile = isOnGitHub && url.match(/.+\/.+\/.+\/?/gi) != null;
     var isOnRepo = isOnGitHub && url.match(/.+\/.+\/.+\/.+\/?/gi) != null;
     var isOnIssuePage = isOnGitHub && ( url.indexOf('/pull/') != -1 || url.indexOf('/issue/') != -1 || url.indexOf('/issues/') != -1 );
+    var isOnIssuesPage = isOnGitHub && url.indexOf('/issues') != -1;
     var isAlreadyGitcoinBountyD = document.getElementsByClassName('gitcoin_bounty').length >= 1;
+    var isOnIssueBoard = isOnGitHub && url.indexOf('boards') != -1;
     
+    console.log(url, "HERE IS THE PAGE URL!!", isOnIssuesPage, isOnRepo, isOnGitHub)
+
     if(isOnUserProfile){
         addButtonToUserPage();
     }
     if (isOnIssuePage){
-        if (!isAlreadyGitcoinBountyD){
+        // if (!isAlreadyGitcoinBountyD){
             addButtonToIssuePage();
-        }
+            addBountyInfoToIssuePage(url);
+        // }
         injectGetBountyAmount();
     } else if (isOnRepo){
         var repoUrl = document.location.href.split('issues')[0].split('pulls')[0];
         injectGetNumberBounties(repoUrl);
     } else if (isOnGitHub){
         injectGetTotalBounties();
+    } 
+    if (isOnIssuesPage) {
+        injectGetAllBountiesOnIssuesPage();
+    }
+    if (isOnIssueBoard) {
+        setInterval(function() {
+            injectGetAllBountiesOnIssueBoard(); 
+        }, 2500)
     }
 }
 
