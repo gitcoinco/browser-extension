@@ -18,7 +18,7 @@ The Chrome extension is live on the Google Chrome Store.  [Get it here](https://
 
 # Legal
 
-'''
+```
     Copyright (C) 2017 Gitcoin Core 
 
     This program is free software: you can redistribute it and/or modify
@@ -34,7 +34,7 @@ The Chrome extension is live on the Google Chrome Store.  [Get it here](https://
     You should have received a copy of the GNU Affero General Public License
     along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-'''
+```
 
 
 <!-- Google Analytics -->

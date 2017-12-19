@@ -277,6 +277,7 @@ var injectGetBountyAmount = function(){
 //       } \
 //       ';
 
+
 //       injectScript(injectThisCode);
 //     }, 1000);
 // }
