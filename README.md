@@ -9,16 +9,16 @@ Gitcoin pushes Open Source Forward.  Learn more at [https://gitcoin.co](https://
 # Chrome Extension
 
 ## Browse Work Directly on Github
-<img src=“readme/browse_on_github.png”>
+<img src='readme/browse_on_github.png”>
 
 ## Filter Available Work from Github
-<img src=“readme/filter_available_work.png”>
+<img src='readme/filter_available_work.png”>
 
 ## Fund Work Directly on Github
-<img src=“readme/fund.png”>
+<img src='readme/fund.png”>
 
 ## Tip Users Direclty on Github
-<img src=“readme/tip.png”>
+<img src='readme/tip.png”>
 
 
 
