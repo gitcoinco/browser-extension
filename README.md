@@ -8,25 +8,30 @@ Gitcoin pushes Open Source Forward.  Learn more at [https://gitcoin.co](https://
 
 # Chrome Extension
 
-## Browse Work Directly on Github
+## Get It Today
+
+The Chrome extension is live on the Google Chrome Store.  [Get it here](https://gitcoin.co/extension).
+
+## What it Do
+
+### Browse Work Directly on Github
 
 <img src='readme/browse_on_github.png'>
 
-## Filter Available Work from Github
+### Filter Available Work from Github
 
 <img src='readme/filter_available_work.png'>
 
-## Fund Work Directly on Github
+### Fund Work Directly on Github
 
 <img src='readme/fund.png'>
 
-## Tip Users Direclty on Github
+### Tip Users Direclty on Github
 
 <img src='readme/tip.png'>
 
 
-
-# Get It Today
+## Get It Today
 
 The Chrome extension is live on the Google Chrome Store.  [Get it here](https://gitcoin.co/extension).
 
