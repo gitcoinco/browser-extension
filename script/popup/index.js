@@ -31,12 +31,12 @@ function timeDifference(current, previous) {
 
     if (elapsed < msPerMinute) {
         var amt = Math.round(elapsed/1000);
-        var unit = 'second';
+        var unit = 'sec';
     }
 
     else if (elapsed < msPerHour) {
         var amt = Math.round(elapsed/msPerMinute);
-        var unit = 'minute';
+        var unit = 'min';
     }
 
     else if (elapsed < msPerDay ) {
@@ -97,12 +97,14 @@ var appendTableNodes = function(bounties) {
     var max_display = 10;
     for(var i=0; i<bounties.length && i<max_display; i++){
         var bounty = bounties[i];
+        var imghtml = "<img height=20 width=20 src="+bounty['avatar_url']+"/>"
         var val = Math.round(100.0 * bounty['value_in_token']/10**18) / 100;
         var newHTML = '                <tr> \
+              <td>'+imghtml+'</td> \
               <td>'+timeDifference(new Date(), new Date(bounty['web3_created']))+'</td> \
               <td>'+val+' '+bounty['token_name']+'</td> \
               <td>'+limitStr(bounty['title'],30)+'</td> \
-              <td><a target=_blank href="'+bounty['github_url']+'">View >></a></td> \
+              <td><a class=target target=_blank href="'+bounty['github_url']+'">View >></a></td> \
             </tr> \
             ';
         $("#openbounties tbody").append(newHTML);
@@ -159,7 +161,7 @@ $(document).ready(function(){
     }else if(!isweb3unlocked()){
         addMessage('warning',"Metamask locked.  Try unlocking it & refreshing.")
     } else {
-        $('#address').text(limitStr(web3account(),15));
+        $('#address').text(limitStr(web3account(),10));
         $('#address').attr('href','https://etherscan.io/address/'+web3account());
         $('#balance').text(localStorage['ethbalance']);
     }
@@ -178,11 +180,13 @@ $(document).ready(function(){
             for(var i=0; i<results.length && i<max_display; i++){
                 var result = results[i];
                 var val = Math.round(100.0 * result['value_in_token']/10**18) / 100;
+                var imghtml = "<img height=20 width=20 src="+result['avatar_url']+"/>"
                 var newHTML = '                <tr> \
+                      <td>'+imghtml+'</td> \
                       <td>'+timeDifference(new Date(), new Date(result['web3_created']))+'</td> \
                       <td>'+val+' '+result['token_name']+'</td> \
                       <td>'+limitStr(result['title'],30)+'</td> \
-                      <td><a target=_blank href="'+result['github_url']+'">View >></a></td> \
+                      <td><a class=target target=_blank href="'+result['github_url']+'">View >></a></td> \
                     </tr> \
                     ';
                 $("#openbounties tbody").append(newHTML);
@@ -191,6 +195,7 @@ $(document).ready(function(){
     }).error(function(){
             $("#openbounties tbody").append('Error: Could not reach api.');
     });;
+
 
     $("#bounty a").attr('href', 'https://gitcoin.co/funding/new' + "?" + '&user=' + localStorage['githubusername'] + "&source=" + localStorage['browser_location']);
 
