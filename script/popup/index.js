@@ -10,7 +10,7 @@ var web3account = function(){
 var url = localStorage['browser_location'];
 var isOnGitHubcom = url.indexOf('://github.com') != -1 && url.indexOf('://github.com') < 15;
 var isOnRepo = isOnGitHubcom && url.match(/.+\/.+\/.+\/.+\/?/gi) != null;
-console.log(isOnGitHubcom, isOnRepo, 'where you at?')
+//console.log(isOnGitHubcom, isOnRepo, 'where you at?')
 
 
 
@@ -78,7 +78,7 @@ getAllBounties = function(){
   var xmlHttp = new XMLHttpRequest();
   xmlHttp.open( "GET", bounties_api_url, false ); // false for synchronous request
   xmlHttp.send( null );
-  console.log('all Bounties', JSON.parse(xmlHttp.responseText))
+  //console.log('all Bounties', JSON.parse(xmlHttp.responseText))
   return JSON.parse(xmlHttp.responseText);
 }
 
@@ -129,7 +129,7 @@ var searchBounties = function(keyword) {
 
 if (isOnGitHubcom && isOnRepo) {
     var repo = localStorage['browser_location'].split('/')[4]
-    console.log(repo, 'repo')
+    //console.log(repo, 'repo')
     searchBounties(repo);
 }
 

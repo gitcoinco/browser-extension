@@ -19,8 +19,6 @@ var body = function(){
     var isAlreadyGitcoinBountyD = document.getElementsByClassName('gitcoin_bounty').length >= 1;
     var isOnIssueBoard = isOnGitHub && url.indexOf('boards') != -1;
     
-    console.log(url, "HERE IS THE PAGE URL!!", isOnIssuesPage, isOnRepo, isOnGitHub)
-
     if(isOnUserProfile){
         addButtonToUserPage();
     }
