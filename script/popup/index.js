@@ -8,8 +8,8 @@ var web3account = function(){
     return localStorage['web3account'];
 }
 var url = localStorage['browser_location'];
-var isOnGitHubcom = url.indexOf('://github.com') != -1 && url.indexOf('://github.com') < 15;
-var isOnRepo = isOnGitHubcom && url.match(/.+\/.+\/.+\/.+\/?/gi) != null;
+var isOnGitHubcom = typeof url != 'undefined' && url.indexOf('://github.com') != -1 && url.indexOf('://github.com') < 15;
+var isOnRepo = typeof url != 'undefined' && isOnGitHubcom && url.match(/.+\/.+\/.+\/.+\/?/gi) != null;
 //console.log(isOnGitHubcom, isOnRepo, 'where you at?')
 
 
