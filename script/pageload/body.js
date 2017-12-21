@@ -23,26 +23,32 @@ var body = function(){
         addButtonToUserPage();
     }
     if (isOnIssuePage){
-        // if (!isAlreadyGitcoinBountyD){
             addButtonToIssuePage();
             addBountyInfoToIssuePage(url);
-        // }
-        injectGetBountyAmount();
+            injectGetBountyAmount();
     } else if (isOnRepo){
         var repoUrl = document.location.href.split('issues')[0].split('pulls')[0];
         injectGetNumberBounties(repoUrl);
     } else if (isOnGitHub){
-        injectGetTotalBounties();
+            injectGetTotalBounties();
     } 
     if (isOnIssuesPage) {
-        injectGetAllBountiesOnIssuesPage();
+            injectGetAllBountiesOnIssuesPage();
     }
     if (isOnIssueBoard) {
-        setInterval(function() {
             injectGetAllBountiesOnIssueBoard(); 
-        }, 2500)
     }
 }
 
-body();
+var url = window.location.href;
+var hasRun = false;
+
+setInterval(function() {
+    if (url !== window.location.href || !hasRun) {
+        url = window.location.href;
+        body();
+    }
+    hasRun = true;
+}, 5000);
+
 
