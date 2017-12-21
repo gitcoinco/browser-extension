@@ -49,6 +49,6 @@ setInterval(function() {
         body();
     }
     hasRun = true;
-}, 5000);
+}, 1000);
 
 
