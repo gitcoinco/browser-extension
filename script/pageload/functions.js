@@ -18,7 +18,6 @@ getAllBounties = function(){
   var xmlHttp = new XMLHttpRequest();
   xmlHttp.open( "GET", bounties_api_url, false ); // false for synchronous request
   xmlHttp.send( null );
-  //console.log('all Bounties', JSON.parse(xmlHttp.responseText))
   return JSON.parse(xmlHttp.responseText);
 }
 
@@ -93,7 +92,6 @@ injectGetAllBountiesOnIssueBoard = function() {
   var issue_nodes = document.getElementsByClassName('zhc-issue-card__issue-title');
   var issue_parent_nodes = document.getElementsByClassName('zhc-issue-card');
   var all_bounties = getAllBounties();
-  //console.log(issue_nodes);
   for (var i = issue_nodes.length - 1; i >= 0; i--) {
     var issue_name = issue_nodes[i].innerHTML.trim()
     for (var j = all_bounties.length - 1; j >= 0; j--) {
@@ -103,7 +101,6 @@ injectGetAllBountiesOnIssueBoard = function() {
       var bounty_url = "https://gitcoin.co" + all_bounties[i].url;
 
       if (issue_name == bounty_name) {
-        //console.log('found match')
         var bounty_badge = document.createElement("a");
         var bounty_badge_text = document.createElement("span");
         var gitcoin_logo = document.createElement("img");
@@ -164,7 +161,6 @@ var addButtonToUserPage = function(){
 
 var addBountyInfoToIssuePage = function(url) {
   var all_bounties = getBountiesForRepo(url);
-  //console.log('all bounties', all_bounties)
   var bounty_anchor = document.getElementsByClassName('gitcoin_bounty')[0];
   // bounty_anchor = "https://gitcoin.co/funding/details?url=" + url;
   var bounty_text = document.createElement("span");
