@@ -6,7 +6,7 @@ var injectScript = function(script){
 }
 
 var setThumbnail = function(text){
-    chrome.extension.sendMessage(text);
+    browser.runtime.sendMessage(text);
 };
 
 var insertAfter = function(newNode, referenceNode) {
