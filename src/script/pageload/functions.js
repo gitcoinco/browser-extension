@@ -1,8 +1,8 @@
 //function defs
 var injectScript = function(script){
-    var elt = document.createElement("script");
-    elt.innerHTML = script;
-    document.head.appendChild(elt);
+    browser.tabs.executeScript({
+      code: script
+    });
 }
 
 var setThumbnail = function(text){
