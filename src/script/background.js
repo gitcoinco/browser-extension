@@ -1,16 +1,21 @@
-browser.runtime.onMessage.addListener(function(message, sender) {
-    if(typeof message == 'string'){
-       browser.browserAction.setBadgeBackgroundColor({
-          color: '#15003e'
-      });
-      browser.browserAction.setBadgeText({text: message});
-    }
-});
-
 browser.runtime.onMessage.addListener(
-    function(request, sender, sendResponse){
-        for (var key in request) {
-         localStorage[key] = request[key];
-        }      
+    function(request, sender, sendResponse) {
+        if (typeof request === 'string') {
+            browser.browserAction.setBadgeBackgroundColor({
+                color: '#15003e'
+            });
+            browser.browserAction.setBadgeText({text: request});
+        } else {
+            if (request.code && typeof request.code === 'string') {
+                // console.log("injecting " + request.code);
+                browser.tabs.executeScript({
+                    code: request.code
+                });
+            } else {
+                for (var key in request) {
+                    localStorage[key] = request[key];
+                }
+            }
+        }
     }
 );
