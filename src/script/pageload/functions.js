@@ -1,8 +1,6 @@
-//function defs
-var injectScript = function(script){
-    browser.tabs.executeScript({
-      code: script
-    });
+// function defs
+var injectScript = function(script) {
+    browser.runtime.sendMessage({code: script});
 }
 
 var setThumbnail = function(text){
@@ -13,7 +11,7 @@ var insertAfter = function(newNode, referenceNode) {
     referenceNode.parentNode.insertBefore(newNode, referenceNode.nextSibling);
 }
 
-getAllBounties = function(){
+var getAllBounties = function(){
   var bounties_api_url = 'https://gitcoin.co/api/v0.1/bounties/?idx_status=open&network=mainnet&order_by=-web3_created';
   var xmlHttp = new XMLHttpRequest();
   xmlHttp.open( "GET", bounties_api_url, false ); // false for synchronous request
@@ -21,7 +19,7 @@ getAllBounties = function(){
   return JSON.parse(xmlHttp.responseText);
 }
 
-getBountiesForRepo = function(github_url) {
+var getBountiesForRepo = function(github_url) {
   var bounties_api_url = "https://gitcoin.co/api/v0.1/bounties/?idx_status=open&network=mainnet&github_url=" + github_url;
   var xmlHttp = new XMLHttpRequest();
   xmlHttp.open( "GET", bounties_api_url, false ); // false for synchronous request
@@ -29,26 +27,26 @@ getBountiesForRepo = function(github_url) {
   return JSON.parse(xmlHttp.responseText);
 } 
 
-getBountiesForKeyword = function(keyword) {
+var getBountiesForKeyword = function(keyword) {
   var bounties_api_url = "https://gitcoin.co/api/v0.1/bounties/?order_by=web3_created&network=mainnet&idx_status=open";
   var xmlHttp = new XMLHttpRequest();
   xmlHttp.open( "GET", bounties_api_url, false ); // false for synchronous request
   xmlHttp.send( null );
   var all_bounties = JSON.parse(xmlHttp.responseText);
-  matching_bounties = [];
+  var matching_bounties = [];
   for (var i = all_bounties.length - 1; i >= 0; i--) {
     var bounty_keywords = JSON.parse(all_bounties[i].raw_data[8]).issueKeywords.toLowerCase();
     var bounty_title = all_bounties[i].title.toLowerCase();
     var does_title_contain = bounty_title.indexOf(keyword) !== -1;
     var do_keywords_contain = bounty_keywords.indexOf(keyword) !== -1;
     if (do_keywords_contain || does_title_contain) {
-      matching_bounties.push(all_bounties[i])
+      matching_bounties.push(all_bounties[i]);
     }
   }
   return matching_bounties;
 } 
 
-injectGetAllBountiesOnIssuesPage = function(){
+var injectGetAllBountiesOnIssuesPage = function(){
         var issue_nodes = document.getElementsByClassName('link-gray-dark');
         var all_bounties = getAllBounties();
         for (var i = issue_nodes.length - 1; i >= 0; i--) {
@@ -88,7 +86,7 @@ injectGetAllBountiesOnIssuesPage = function(){
         }
 }
 
-injectGetAllBountiesOnIssueBoard = function() {
+var injectGetAllBountiesOnIssueBoard = function() {
   var issue_nodes = document.getElementsByClassName('zhc-issue-card__issue-title');
   var issue_parent_nodes = document.getElementsByClassName('zhc-issue-card');
   var all_bounties = getAllBounties();
