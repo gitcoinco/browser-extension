@@ -7,7 +7,6 @@ browser.runtime.onMessage.addListener(
             browser.browserAction.setBadgeText({text: request});
         } else {
             if (request.code && typeof request.code === 'string') {
-                // console.log("injecting " + request.code);
                 browser.tabs.executeScript({
                     code: request.code
                 });
