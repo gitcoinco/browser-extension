@@ -6,14 +6,19 @@
   [
     {
       "matches": ["*://*/*"],
-      "js": ["script/pageload/functions.js", "script/pageload/body.js", "script/pageload/callbacks.js"],
+      "js": [
+        "lib/browser-polyfill.js",
+        "script/pageload/functions.js",
+        "script/pageload/body.js",
+        "script/pageload/callbacks.js"
+      ],
       "run_at": "document_end"
     }
   ],
   "homepage_url": "https://gitcoin.co/",
   "name": "Gitcoin",
   "description": "Push Open Source Forward.  The easiest way to monetize your work in open source software.",
-  "version": "0.904",
+  "version": "0.13",
 
   "browser_action": {
     "default_icon": "images/icon.png",
@@ -25,11 +30,15 @@
   "permissions": [
     "activeTab",
     "https://ajax.googleapis.com/",
-    "https://gitcoin.co/"
+    "https://gitcoin.co/",
+    "https://github.com/"
   ],
   "background":
   {
-    "scripts":["script/background.js"],
-    "persistent": false
+    "scripts":[
+      "lib/browser-polyfill.js",
+      "script/background.js"
+    ],
+    "persistent": true
   }
 }

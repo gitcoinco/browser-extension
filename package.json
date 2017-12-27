@@ -1,0 +1,28 @@
+{
+  "name": "gitcoin_browser_ext",
+  "version": "1.0.0",
+  "description": "Push Open Source Forward.  The easiest way to monetize your work in open source software.",
+  "dependencies": {},
+  "devDependencies": {
+    "jquery": "^3.2.1",
+    "webextension-polyfill": "^0.2.1",
+    "web-ext": "^2.2.2"
+  },
+  "scripts": {
+    "lint": "npx web-ext lint -s src",
+    "copy_webextension-polyfill": "cp node_modules/webextension-polyfill/dist/browser-polyfill.js src/lib/browser-polyfill.js",
+    "copy_jquery": "cp node_modules/jquery/dist/jquery.js src/lib/jquery.js",
+    "build": "npm run copy_webextension-polyfill && npm run copy_jquery && npx web-ext build -s src",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/gitcoin/chrome_ext.git"
+  },
+  "author": "Gitcoin Co",
+  "license": "AGPL",
+  "bugs": {
+    "url": "https://github.com/gitcoin/chrome_ext/issues"
+  },
+  "homepage": "https://github.com/gitcoin/chrome_ext#readme"
+}
