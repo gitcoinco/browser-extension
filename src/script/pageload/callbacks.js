@@ -13,7 +13,7 @@ callbacks = [
     function(event){
         var msg = {};
         msg[event.data.type]=event.data.text;
-        browser.runtime.sendMessage(msg);
+        browser.runtime.sendMessage({text: msg});
     },
     function(event){
         if(event.data.type == 'bountyDetails'){

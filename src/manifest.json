@@ -18,7 +18,7 @@
   "homepage_url": "https://gitcoin.co/",
   "name": "Gitcoin",
   "description": "Push Open Source Forward.  The easiest way to monetize your work in open source software.",
-  "version": "0.12",
+  "version": "0.13",
 
   "browser_action": {
     "default_icon": "images/icon.png",
@@ -30,7 +30,8 @@
   "permissions": [
     "activeTab",
     "https://ajax.googleapis.com/",
-    "https://gitcoin.co/"
+    "https://gitcoin.co/",
+    "https://github.com/"
   ],
   "background":
   {

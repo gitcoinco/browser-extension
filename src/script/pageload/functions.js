@@ -4,7 +4,7 @@ var injectScript = function(script) {
 }
 
 var setThumbnail = function(text){
-    browser.runtime.sendMessage(text);
+    browser.runtime.sendMessage({text: text});
 };
 
 var insertAfter = function(newNode, referenceNode) {
