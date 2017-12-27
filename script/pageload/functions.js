@@ -73,10 +73,13 @@ injectGetAllBountiesOnIssuesPage = function(){
                 justify-content: center; cursor: pointer`);
               if (bounty_status === "open") {
                 var text = document.createTextNode("Open · $" + bounty_value);
+                bounty_badge_text.className += 'status--open';
               } else if (bounty_status === "claimed") {
                 var text = document.createTextNode("Claimed · $" + bounty_value);
+                bounty_badge_text.className += 'status--claimed';
               } else {
                 var text = document.createTextNode("Fulfilled · $" + bounty_value);
+                bounty_badge_text.className += 'status--fulfilled';
               }
               
               bounty_badge_text.appendChild(text);

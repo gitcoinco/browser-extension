@@ -26,9 +26,9 @@ var body = function(){
     }
     // Location | Issue Page
     if (isOnIssuePage){
-            addButtonToIssuePage();
-            addBountyInfoToIssuePage(url);
-            injectGetBountyAmount();
+        addButtonToIssuePage();
+        addBountyInfoToIssuePage(url);
+        injectGetBountyAmount();
     } else if (isOnRepo){
         var repoUrl = document.location.href.split('issues')[0].split('pulls')[0];
         injectGetNumberBounties(repoUrl);
