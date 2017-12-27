@@ -12,8 +12,27 @@ var isOnGitHubcom = typeof url != 'undefined' && url.indexOf('://github.com') !=
 var isOnRepo = typeof url != 'undefined' && isOnGitHubcom && url.match(/.+\/.+\/.+\/.+\/?/gi) != null;
 //console.log(isOnGitHubcom, isOnRepo, 'where you at?')
 
-
-
+// Options : Access Saved Extension Options
+const theme = chrome.storage.sync.get({
+    theme: 'light',
+  }, function(store) {
+    let theme = store.theme
+    switch (theme) {
+        case 'light':
+            $('#bot').append('<img src="images/bot.png">');
+            $('head').append('<link rel="stylesheet" type="text/css" href="/css/themeLight.css">');
+            break;
+        case 'dark':
+            $('#bot').append('<img src="images/botInverse.png">');
+            $('head').append('<link rel="stylesheet" type="text/css" href="/css/themeDark.css">');
+            break;
+        case 'brand':
+            $('#bot').append('<img src="images/botInverse.png">');
+            $('head').append('<link rel="stylesheet" type="text/css" href="/css/themeBrand.css">');
+            break;
+    }
+  }
+);
 
 function timeDifference(current, previous) {
 

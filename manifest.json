@@ -19,6 +19,7 @@
     "default_icon": "images/icon.png",
     "default_popup": "popup.html"
   },
+  "options_page": "options.html",
   "storage": {
     "managed_schema": "schema.json"
   },
