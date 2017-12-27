@@ -16,12 +16,15 @@ var body = function(){
     var isOnRepo = isOnGitHub && url.match(/.+\/.+\/.+\/.+\/?/gi) != null;
     var isOnIssuePage = isOnGitHub && ( url.indexOf('/pull/') != -1 || url.indexOf('/issue/') != -1 || url.indexOf('/issues/') != -1 );
     var isOnIssuesPage = isOnGitHub && url.indexOf('/issues') != -1;
-    var isAlreadyGitcoinBountyD = document.getElementsByClassName('gitcoin_bounty').length >= 1;
+    var isAlreadyGitcoinBounty = document.getElementsByClassName('gitcoin_bounty').length >= 1;
     var isOnIssueBoard = isOnGitHub && url.indexOf('boards') != -1;
     
-    if(isOnUserProfile){
+
+    // Location | User Profile
+    if(isOnUserProfile && !isAlreadyGitcoinBounty ){
         addButtonToUserPage();
     }
+    // Location | Issue Page
     if (isOnIssuePage){
             addButtonToIssuePage();
             addBountyInfoToIssuePage(url);
@@ -30,13 +33,13 @@ var body = function(){
         var repoUrl = document.location.href.split('issues')[0].split('pulls')[0];
         injectGetNumberBounties(repoUrl);
     } else if (isOnGitHub){
-            injectGetTotalBounties();
+        injectGetTotalBounties();
     } 
     if (isOnIssuesPage) {
-            injectGetAllBountiesOnIssuesPage();
+        injectGetAllBountiesOnIssuesPage();
     }
     if (isOnIssueBoard) {
-            injectGetAllBountiesOnIssueBoard(); 
+        injectGetAllBountiesOnIssueBoard(); 
     }
 }
 
