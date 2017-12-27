@@ -1,0 +1,23 @@
+{
+  "name": "gitcoin_browser_ext",
+  "version": "1.0.0",
+  "description": "Push Open Source Forward.  The easiest way to monetize your work in open source software.",
+  "dependencies": {},
+  "devDependencies": {
+    "web-ext": "^2.2.2"
+  },
+  "scripts": {
+    "lint": "npx web-ext lint -s src",
+    "build:firefox": "npx web-ext build -s src --overwrite-dest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/gitcoin/chrome_ext.git"
+  },
+  "author": "Gitcoin Co",
+  "license": "AGPL",
+  "bugs": {
+    "url": "https://github.com/gitcoin/chrome_ext/issues"
+  },
+  "homepage": "https://github.com/gitcoin/chrome_ext#readme"
+}
