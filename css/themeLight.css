@@ -1,0 +1,22 @@
+body {
+  background-color: #eff4ee;
+}
+
+.table-striped>tbody>tr:nth-of-type(odd):hover{
+  background-color: #eff4ee;
+}
+.table-striped>tbody>tr:nth-of-type(even):hover{
+  background-color: #f0f0f0;
+}
+
+
+#search_bar {
+  border-radius: 16px;
+  height: 32px;
+  border: 1px solid #eee;
+  outline: none;
+  padding-left: 10px;
+  font-weight: 300;
+  border: 1px solid black !important;
+  width: 80%;
+}
