@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Gitcoin</title>
+    <link href="css/bootstrap.css" rel="stylesheet">
+    <link href="css/core.css" rel="stylesheet">
+</head>
+<body>
+   <ul id="messages">
+    </ul>
+    <div id="header">
+        <a target=_blank href="https://gitcoin.co/explorer">
+            <img src="images/header.png" style="width: 600px; height: 161px; background-size: contain; margin-top: -20px; margin-bottom: 10px;">
+        </a>
+    </div>
+
+    <div id="bot">
+        <div class="bot_desc">
+            <h4 id="username"></h4>
+            <p><strong>Address:</strong> <a id="address" target=_blank href="#">Unknown</a></p>
+            <p><strong>Balance: </strong> <span id="balance">0</span> ΞETH</p>
+        </div>
+    </div>
+    <div id="history">
+        <div id="bounty" style="float:right;">
+            <a target=_blank href="https://gitcoin.co/funding/new" class="btn btn-sm btn-primary js-details-target gitcoin_button">+ Fund Issue</a>
+        </div>
+        <h5>Funded Issues</h5>
+            <input type="text" id="search_bar" placeholder="Search for keywords..">
+            <a class="btn btn-sm btn-primary js-details-target gitcoin_button search-button">Search</a>
+            <table class="table table-striped" id="openbounties">
+              <thead>
+                <tr>
+                  <th></th>
+                  <th>When</th>
+                  <th>Amount</th>
+                  <th>For</th>
+                  <th>Link</th>
+                </tr>
+              </thead>
+              <tbody>
+
+              </tbody>
+            </table>
+            <a target=new href="https://gitcoin.co/explorer">View More &gt;&gt; </a>
+
+            <div id="input">
+
+        </div>
+    </div>
+
+</body>
+</html>
+
+<style>
+  body {
+    overflow-x: hidden;
+  }
+  #root {
+    height: 300px;
+    max-width: 100%;
+    width: 500px;
+  }
+</style>
