@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="563px" height="427px" viewBox="0 0 563 427" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 43.1 (39012) - http://www.bohemiancoding.com/sketch -->
+    <title>Group</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <rect id="path-1" x="0" y="54.7911647" width="563" height="65.4859438" rx="8"></rect>
+        <rect id="path-2" x="0" y="176.257028" width="563" height="65.4859438" rx="8"></rect>
+        <rect id="path-3" x="0" y="313.566265" width="563" height="65.4859438" rx="8"></rect>
+        <rect id="path-4" x="-16.8735825" y="178.598162" width="563" height="76.0125121" rx="8"></rect>
+    </defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Group" transform="translate(0.000000, -3.000000)">
+            <g id="Rectangle">
+                <use fill="#D94545" fill-rule="evenodd" xlink:href="#path-1"></use>
+                <rect stroke="#979797" stroke-width="1" x="0.5" y="55.2911647" width="562" height="64.4859438" rx="8"></rect>
+            </g>
+            <g id="Rectangle-Copy">
+                <use fill="#D94545" fill-rule="evenodd" xlink:href="#path-2"></use>
+                <rect stroke="#979797" stroke-width="1" x="0.5" y="176.757028" width="562" height="64.4859438" rx="8"></rect>
+            </g>
+            <g id="Rectangle-Copy-2">
+                <use fill="#D94545" fill-rule="evenodd" xlink:href="#path-3"></use>
+                <rect stroke="#979797" stroke-width="1" x="0.5" y="314.066265" width="562" height="64.4859438" rx="8"></rect>
+            </g>
+            <g id="Rectangle-2" transform="translate(264.626418, 216.604418) rotate(-42.000000) translate(-264.626418, -216.604418) ">
+                <use fill="#FFFFFF" fill-rule="evenodd" xlink:href="#path-4"></use>
+                <rect stroke="#979797" stroke-width="1" x="-16.3735825" y="179.098162" width="562" height="75.0125121" rx="8"></rect>
+            </g>
+        </g>
+    </g>
+</svg>

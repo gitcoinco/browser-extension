@@ -1,0 +1,28 @@
+query
+  (
+    $boundaries: ReadBoundaries,
+    $order: ReadOrder
+  ){
+  item
+  (
+    entity: "community",
+    branch: ["organizations", "-KvWvEr5Ll8afgKp4Cvv"],
+    boundaries: $boundaries,
+    order: $order
+  ){
+      identity {
+        contact {
+          contactEmail
+          contactPhone
+          contactURL
+        }
+        name {
+          nameOrganization
+          nameOrganizationLegal
+          nameFirst
+          nameLast
+          nameDisplay
+        }
+      }
+    }
+}

@@ -1,0 +1,38 @@
+query($uid: String!, $boundaries: ReadBoundaries, $order: ReadOrder ) {
+  user(uid: $uid, boundaries: $boundaries, order: $order ) {
+    pointer
+    authentication {
+      email
+    }
+    identity {
+        address {
+          addressCity
+          addressStreet
+          addressState
+          addressZip
+          addressCountry
+        }
+        biography {
+          biographyMission
+          biographyOccupation
+          biographyOverview
+          biographySkills
+        }
+        contact {
+          contactEmail
+          contactPhone
+          contactURL
+        }
+        name {
+          nameFirst
+          nameLast
+          nameDisplay
+        }
+        images {
+          imageBackground
+          imageProfile
+        }
+    }
+  }
+}
+

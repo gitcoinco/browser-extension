@@ -1,5 +1,6 @@
 {
   "background.js": "background.bundle.js",
   "options.js": "options.bundle.js",
-  "popup.js": "popup.bundle.js"
+  "popup.js": "popup.bundle.js",
+  "popup.js.map": "popup.bundle.js.map"
 }

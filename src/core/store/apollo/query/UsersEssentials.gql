@@ -1,0 +1,30 @@
+query($boundaries: ReadBoundaries, $order: ReadOrder) {
+  list(entity: "users", boundaries: $boundaries, order: $order) {
+    id
+    items {
+      uid
+      authentication {
+        email
+      }
+      identity {
+        biography {
+          biographyOverview
+        }
+        contact {
+          contactEmail
+          contactPhone
+          contactURL
+        }
+        name {
+          nameFirst
+          nameLast
+          nameDisplay
+        }
+        images {
+          imageBackground
+          imageProfile
+        }
+      }
+    }
+  }
+}

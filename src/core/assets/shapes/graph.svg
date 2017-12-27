@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<svg width="60px" height="60px" viewBox="0 0 60 60" version="1.1" xmlns="http://www.w3.org/2000/svg">
+    <g id="Page-1" stroke="none" stroke-width="1" fill-rule="evenodd">
+        <g id="ghraph" fill-rule="nonzero">
+            <g id="Group">
+                <circle id="Oval" cx="56" cy="23" r="1"></circle>
+                <circle id="Oval" cx="56" cy="29" r="1"></circle>
+                <circle id="Oval" cx="53" cy="32" r="1"></circle>
+                <circle id="Oval" cx="41" cy="32" r="1"></circle>
+                <circle id="Oval" cx="44" cy="29" r="1"></circle>
+                <circle id="Oval" cx="26" cy="41" r="1"></circle>
+                <circle id="Oval" cx="53" cy="38" r="1"></circle>
+                <circle id="Oval" cx="56" cy="35" r="1"></circle>
+                <circle id="Oval" cx="56" cy="41" r="1"></circle>
+                <circle id="Oval" cx="47" cy="38" r="1"></circle>
+                <circle id="Oval" cx="50" cy="35" r="1"></circle>
+                <circle id="Oval" cx="50" cy="41" r="1"></circle>
+                <circle id="Oval" cx="35" cy="38" r="1"></circle>
+                <circle id="Oval" cx="41" cy="38" r="1"></circle>
+                <circle id="Oval" cx="23" cy="44" r="1"></circle>
+                <circle id="Oval" cx="29" cy="44" r="1"></circle>
+                <circle id="Oval" cx="11" cy="44" r="1"></circle>
+                <circle id="Oval" cx="53" cy="44" r="1"></circle>
+                <circle id="Oval" cx="47" cy="44" r="1"></circle>
+                <circle id="Oval" cx="35" cy="44" r="1"></circle>
+                <circle id="Oval" cx="41" cy="44" r="1"></circle>
+                <circle id="Oval" cx="38" cy="35" r="1"></circle>
+                <circle id="Oval" cx="44" cy="35" r="1"></circle>
+                <circle id="Oval" cx="38" cy="41" r="1"></circle>
+                <circle id="Oval" cx="44" cy="41" r="1"></circle>
+                <circle id="Oval" cx="23" cy="50" r="1"></circle>
+                <circle id="Oval" cx="26" cy="47" r="1"></circle>
+                <circle id="Oval" cx="26" cy="53" r="1"></circle>
+                <circle id="Oval" cx="29" cy="50" r="1"></circle>
+                <circle id="Oval" cx="17" cy="50" r="1"></circle>
+                <circle id="Oval" cx="20" cy="53" r="1"></circle>
+                <circle id="Oval" cx="5" cy="50" r="1"></circle>
+                <circle id="Oval" cx="11" cy="50" r="1"></circle>
+                <circle id="Oval" cx="8" cy="47" r="1"></circle>
+                <circle id="Oval" cx="14" cy="47" r="1"></circle>
+                <circle id="Oval" cx="8" cy="53" r="1"></circle>
+                <circle id="Oval" cx="14" cy="53" r="1"></circle>
+                <circle id="Oval" cx="53" cy="50" r="1"></circle>
+                <circle id="Oval" cx="56" cy="47" r="1"></circle>
+                <circle id="Oval" cx="56" cy="53" r="1"></circle>
+                <circle id="Oval" cx="47" cy="50" r="1"></circle>
+                <circle id="Oval" cx="50" cy="47" r="1"></circle>
+                <circle id="Oval" cx="50" cy="53" r="1"></circle>
+                <circle id="Oval" cx="32" cy="47" r="1"></circle>
+                <circle id="Oval" cx="32" cy="53" r="1"></circle>
+                <circle id="Oval" cx="35" cy="50" r="1"></circle>
+                <circle id="Oval" cx="41" cy="50" r="1"></circle>
+                <circle id="Oval" cx="38" cy="47" r="1"></circle>
+                <circle id="Oval" cx="44" cy="47" r="1"></circle>
+                <circle id="Oval" cx="38" cy="53" r="1"></circle>
+                <circle id="Oval" cx="44" cy="53" r="1"></circle>
+                <path d="M7,29 L9,29 C9.55,29 10,28.55 10,28 C10,27.45 9.55,27 9,27 L7,27 C6.45,27 6,27.45 6,28 C6,28.55 6.45,29 7,29 Z"
+                id="Shape"></path>
+                <path d="M7,25 L9,25 C9.55,25 10,24.55 10,24 C10,23.45 9.55,23 9,23 L7,23 C6.45,23 6,23.45 6,24 C6,24.55 6.45,25 7,25 Z"
+                id="Shape"></path>
+                <path d="M7,21 L9,21 C9.55,21 10,20.55 10,20 C10,19.45 9.55,19 9,19 L7,19 C6.45,19 6,19.45 6,20 C6,20.55 6.45,21 7,21 Z"
+                id="Shape"></path>
+                <path d="M7,17 L9,17 C9.55,17 10,16.55 10,16 C10,15.45 9.55,15 9,15 L7,15 C6.45,15 6,15.45 6,16 C6,16.55 6.45,17 7,17 Z"
+                id="Shape"></path>
+                <path d="M7,13 L9,13 C9.55,13 10,12.55 10,12 C10,11.45 9.55,11 9,11 L7,11 C6.45,11 6,11.45 6,12 C6,12.55 6.45,13 7,13 Z"
+                id="Shape"></path>
+                <path d="M7,9 L9,9 C9.55,9 10,8.55 10,8 C10,7.45 9.55,7 9,7 L7,7 C6.45,7 6,7.45 6,8 C6,8.55 6.45,9 7,9 Z"
+                id="Shape"></path>
+                <path d="M7,5 L9,5 C9.55,5 10,4.55 10,4 C10,3.45 9.55,3 9,3 L7,3 C6.45,3 6,3.45 6,4 C6,4.55 6.45,5 7,5 Z"
+                id="Shape"></path>
+                <path d="M47.94,29.25 L41.94,21.25 L30.94,38.25 L24.8,30.06 L17.8,45.06 L12.11,37.47 L4,45.59 L4,1 C4,0.45 3.55,0 3,0 C2.45,0 2,0.45 2,1 L2,47.59 L2,56 L1,56 C0.45,56 0,56.45 0,57 C0,57.55 0.45,58 1,58 L2,58 L2,59 C2,59.55 2.45,60 3,60 C3.55,60 4,59.55 4,59 L4,58 L59,58 L60,58 L60,10.61 L47.94,29.25 Z M54,56 C54,55.45 53.55,55 53,55 C52.45,55 52,55.45 52,56 L48,56 C48,55.45 47.55,55 47,55 C46.45,55 46,55.45 46,56 L42,56 C42,55.45 41.55,55 41,55 C40.45,55 40,55.45 40,56 L36,56 C36,55.45 35.55,55 35,55 C34.45,55 34,55.45 34,56 L30,56 C30,55.45 29.55,55 29,55 C28.45,55 28,55.45 28,56 L24,56 C24,55.45 23.55,55 23,55 C22.45,55 22,55.45 22,56 L18,56 C18,55.45 17.55,55 17,55 C16.45,55 16,55.45 16,56 L12,56 C12,55.45 11.55,55 11,55 C10.45,55 10,55.45 10,56 L6,56 C6,55.45 5.55,55 5,55 C4.45,55 4,55.45 4,56 L4,50 L4,48.41 L11.89,40.52 L18.2,48.93 L19.03,47.15 C19.11,47.63 19.5,48 20,48 C20.55,48 21,47.55 21,47 C21,46.45 20.55,46 20,46 C19.81,46 19.65,46.06 19.5,46.15 L25.2,33.93 L31.06,41.74 L31.19,41.54 C31.37,41.82 31.66,42 32,42 C32.55,42 33,41.55 33,41 C33,40.51 32.64,40.12 32.17,40.03 L42.06,24.74 L46.78,31.04 C46.34,31.15 46,31.52 46,32 C46,32.55 46.45,33 47,33 C47.37,33 47.69,32.79 47.86,32.48 L48.06,32.75 L52.13,26.46 C52.3,26.78 52.62,27 53,27 C53.55,27 54,26.55 54,26 C54,25.47 53.59,25.05 53.06,25.01 L58,17.39 L58,56 L54,56 Z"
+                id="Shape"></path>
+            </g>
+        </g>
+    </g>
+</svg>

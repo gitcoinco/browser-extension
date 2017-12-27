@@ -1,0 +1,40 @@
+query($pointer: String!, $boundaries: ReadBoundaries, $order: ReadOrder)
+{
+  organization(pointer: $pointer, boundaries: $boundaries, order: $order)
+  {
+    uid
+    pointer
+    authentication
+    {
+      email
+    }
+    identity
+    {
+      address
+      {
+        addressCity
+        addressStreet
+        addressState
+        addressZip
+        addressCountry
+      }
+      contact
+      {
+        contactEmail
+        contactPhone
+        contactURL
+      }
+      name
+      {
+        nameOrganization
+        nameOrganizationLegal
+      }
+      images
+      {
+        imageBackground
+        imageProfile
+      }
+    }
+  }
+}
+

@@ -1,0 +1,21 @@
+<svg preserveAspectRatio="none"  viewBox="0 0 695 166"  version="1.1" xmlns="http://www.w3.org/2000/svg" >
+<defs>
+        <linearGradient x1="0.25781251%" y1="49.7500002%" x2="101.456216%" y2="-38.9148956%" id="linearGradient-1">
+            <stop stop-color="#3023AE" offset="0%"></stop>
+            <stop stop-color="#53A0FE" offset="26.7803812%"></stop>
+            <stop stop-color="#B4ED50" offset="100%"></stop>
+        </linearGradient>
+        <linearGradient x1="49.675706%" y1="-10.3215591%" x2="49.9451086%" y2="81.3265107%" id="linearGradient-2">
+            <stop stop-color="#3E5FB2" stop-opacity="0.688405797" offset="2.41350446%"></stop>
+            <stop stop-color="#3D5FB2" stop-opacity="0.884285831" offset="39.5707111%"></stop>
+            <stop stop-color="#3D5EAF" stop-opacity="0.889708823" offset="53.0512596%"></stop>
+            <stop stop-color="#30467C" offset="97.130102%"></stop>
+        </linearGradient>
+    </defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Waves">
+            <path d="M-5.68434189e-14,85 C-5.68434189e-14,85 57.1357069,26.1717938 127,35 C167,40.0544883 377.739216,127.011735 480,124 C582.260784,120.988265 695,41 695,41 L695,200 L-5.68434189e-14,200 L-5.68434189e-14,85 Z" id="Rectangle" fill="url(#linearGradient-1)" opacity="0.829030797"></path>
+            <path d="M-1.13686838e-13,85 C-1.13686838e-13,85 98.1357069,-7.82820623 168,1 C208,6.05448826 377.739216,127.011735 480,124 C582.260784,120.988265 695,41 695,41 L695,200 L-1.13686838e-13,200 L-1.13686838e-13,85 Z" id="Rectangle" fill="url(#linearGradient-2)" transform="translate(347.500000, 100.203995) scale(-1, 1) translate(-347.500000, -100.203995) "></path>
+        </g>
+    </g>
+</svg>

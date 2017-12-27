@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<svg width="93px" height="70px" viewBox="0 0 93 70" version="1.1" xmlns="http://www.w3.org/2000/svg">
+    <g id="Page-1" stroke="none" stroke-width="1" fill-rule="evenodd">
+        <g id="laptop" transform="translate(-4.000000, 0.000000)" fill-rule="nonzero">
+            <g id="Group" transform="translate(4.000000, 0.000000)">
+                <path d="M79.2,7.3 L79.2,3.4 L13.6,3.4 L13.6,7.3 L79.2,7.3 Z M79.2,10 L13.6,10 L13.6,43.3 L79.2,43.3 L79.2,10 L79.2,10 Z M92.1,66.9 L92.1,67.2 C92.1,68.6 90.9,69.8 89.4,69.8 L3.5,69.8 C2,69.8 0.8,68.6 0.8,67.2 L0.8,66.9 L10,44.7 L10,44.3 L10,10 L10,2.5 C10,1.1 11.3,0 12.8,0 L80,0 C81.6,0 82.9,1.1 82.9,2.5 L82.9,7.3 L82.9,44.3 L82.9,44.7 L92.1,66.9 Z M87.9,66.4 L79.8,46.9 L13,46.9 L4.9,66.4 L87.9,66.4 Z"
+                id="Shape"></path>
+                <rect id="Rectangle-path" x="59.3" y="35" width="14.1" height="2.5"></rect>
+                <rect id="Rectangle-path" x="59.3" y="30.2" width="14.1" height="2.5"></rect>
+                <rect id="Rectangle-path" x="59.3" y="25.4" width="14.1" height="2.5"></rect>
+                <rect id="Rectangle-path" x="59.3" y="20.6" width="14.1" height="2.5"></rect>
+                <rect id="Rectangle-path" x="59.3" y="15.7" width="14.1" height="2.5"></rect>
+                <polygon id="Shape" points="39.6 26.6 34.9 30.5 34.9 22.7"></polygon>
+                <path d="M34,57.2 L32.6,60.7 L58.8,60.7 L57.4,57.2 L34,57.2 Z M29.5,60.9 L31.4,56.2 C31.6,55.2 32.5,54.4 33.7,54.4 L57.7,54.4 C58.9,54.4 59.8,55.2 60,56.2 L61.9,60.9 L61.9,61.2 C61.9,62.4 60.8,63.4 59.6,63.4 L31.9,63.4 C30.6,63.4 29.6,62.4 29.6,61.2 L29.6,60.9 L29.5,60.9 Z"
+                id="Shape"></path>
+                <path d="M54,37.7 L18.4,37.7 L18.4,15.6 L54,15.6 L54,37.7 Z M21.2,18.4 L21.2,34.9 L51.3,34.9 L51.3,18.4 L21.2,18.4 Z"
+                id="Shape"></path>
+            </g>
+        </g>
+    </g>
+</svg>

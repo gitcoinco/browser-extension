@@ -1,0 +1,41 @@
+query
+  (
+    $entity: String,
+    $branch: [String],
+    $boundaries: ReadBoundaries,
+    $order: ReadOrder
+  ){
+  list
+  (
+    entity: $entity,
+    branch: $branch,
+    boundaries: $boundaries,
+    order: $order
+  ){
+    id
+    items {
+      authentication {
+        email
+      }
+      identity {
+        biography {
+          biographyOverview
+        }
+        contact {
+          contactEmail
+          contactPhone
+          contactURL
+        }
+        name {
+          nameFirst
+          nameLast
+          nameDisplay
+        }
+        images {
+          imageBackground
+          imageProfile
+        }
+      }
+    }
+  }
+}
