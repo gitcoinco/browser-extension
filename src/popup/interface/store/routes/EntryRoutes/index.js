@@ -2,7 +2,7 @@
 import React from 'react';
 import { Switch, Route } from 'react-router';
 import styled from 'styled-components'
-import { Box } from 'particles'
+import { BackgroundGradient, Box } from 'atoms'
 /* ------------------------- External Dependencies -------------------------- */
 import SiteEntry from 'layout/entry/Site'
 import DashboardEntry from 'layout/entry/Dashboard'
@@ -26,6 +26,7 @@ const ToastSetting = {
 
 export default () => (
 <div>
+  <BackgroundGradient gradient='blue' left right top bottom />
   <Box z={[10000]} >
     <DialogFactory/>
     <DrawerFactory/>

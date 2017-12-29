@@ -33,9 +33,8 @@ export const initialState = {
       gradient: 'blue',
       br: ['0 15px 0 0'],
       color: ['white'],
-      mt: [140, 95],
-    
-      w: [0, 170, 250],
+      mt: [140, 63],
+      w: [0, 230, 250],
     },
     meta: {
       mr: 0

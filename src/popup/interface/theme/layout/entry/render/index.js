@@ -20,7 +20,7 @@ export default props=>
 left right top bottom
 bg='white'
 > 
-  <BackgroundGradient gradient="purpleBlue"/>
+  <BackgroundGradient gradient="blue"/>
   <BackgroundImage src={officeMeeting} o={0.2} />
   <DrawerFactory>
     <AsideDrawerMenu/>

@@ -1,5 +1,0 @@
-fragment UserProjects on User {
-  projects {
-    id
-  }
-}

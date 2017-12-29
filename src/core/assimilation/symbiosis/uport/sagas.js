@@ -2,10 +2,10 @@
 import { call, put, takeEvery, takeLatest } from 'redux-saga/effects';
 
 /* ------------------------- Internal Dependencies -------------------------- */
+import uPortConnection from 'logic/services/uPort';
 import {
   notificationOpen
 } from 'store/departments/actions'
-import uPortConnection from 'logic/services/uPort';
 import {
   UPORT_GET_WEB3_REQUEST,
   UPORT_GET_PROVIDER_REQUEST,
@@ -78,6 +78,7 @@ function* getCredentials({payload, metadata}) {
       message: `Welcome ${credentials.name} to Eidenai`
     }}))
   } catch(e) {
+    console.log(e)
     yield put(uPortGetCredentialsFailure({payload: e, metadata}))
     yield put(notificationOpen({payload:{
       title: 'Failure: Identity Request ',
@@ -108,11 +109,12 @@ function* getAddress({payload, metadata}) {
 /*---*--- Get Attest Credentials ---*---*/
 function* getAttestCredentials({payload, metadata}) {
   try {
-    yield put(notificationOpen({payload:{title: 'Requesting: Attest Information '}}))
+    
     const { credentials, uriHandler } = payload
-    const address = yield uPortConnection.attestCredentials(payload, uriHandler)
+    const address = yield uPortConnection.attestCredentials(credentials, uriHandler)
+
     yield put(uPortGetAttestCredentialsSuccess({
-      payload: address, 
+      payload: credentials.claim, 
       metadata
     }))
     yield put(notificationOpen({payload:{title: 'Confirmed: Application received Attest Request '}}))

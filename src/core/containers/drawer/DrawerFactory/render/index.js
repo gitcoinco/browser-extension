@@ -11,7 +11,7 @@ export default props =>
 <Absolute top={props.drawer} bottom={props.drawer} left={props.drawer} right={props.drawer} z={1000} >
   <Drawer
       bs={[2]}
-      br={'0 25px 25px 0'}
+      borderRadius={'0 25px 25px 0'}
       open={props.drawer}
       position='left'
       py={50}
@@ -20,7 +20,7 @@ export default props =>
       overflow='hidden'
       z={200}
     >
-    <Absolute top right br={9999} mt={[5]} mr={[5]} gradient='cherry' p={[5]}  ><DrawerClose><Heading f={[2]} level={[6]}><a>x</a></Heading></DrawerClose></Absolute>
+    <Absolute top right borderRadius={9999} mt={[5]} mr={[5]} gradient='cherry' p={[5]}  ><DrawerClose><Heading f={[2]} level={[6]}><a>x</a></Heading></DrawerClose></Absolute>
     <PerfectScrollbar wheelPropagation>
       {props.children}
     </PerfectScrollbar>

@@ -6,7 +6,7 @@ const theme = {
     button: "Roboto,'Segoe UI',Roboto,Oxygen,Ubuntu,Cantarell,'Open Sans','Helvetica Neue',sans-serif"
   },
   fontSizes: [
-    11, 13, 16, 18, 24, 36, 48, 72, 92, 118
+    11, 13, 16, 22, 32, 36, 48, 72, 92, 118
   ],
   colors: {
     amber:'#FFC107',
@@ -27,8 +27,9 @@ const theme = {
     grayBlue: '#607D8B',
     orange:'#f47e58',
     orangeDeep:'#e66734',
-    pink:'#E91E63',
+    pink:'#e3318d',
     purple:'#9C27B0',
+    purpleMuted:'#9391ef',
     purpleDeep:'#673AB7',
     red: '#FA5050',
     sand: '#fffbdc',
@@ -48,7 +49,7 @@ const theme = {
   },
   gradient: {
     black: ['#232526', '#414345'],
-    blue: ['#2583b0', '#065dad'],
+    blue: ['#183682', '#0d023b'],
     blueAqua: ['#13547a', '#80d0c7'],
     blueSky: ['#36D1DC', '#5B86E5'],
     charcoal: ['#283048', '#859398'],
@@ -57,6 +58,7 @@ const theme = {
     kashmir: ['#614385', '#516395'],
     orange: ['#E44D26', '#F16529'],
     red: ['#cb2d3e', '#ef473a'],
+    pink: ['#e3318d', '#d02d81'],
     purple: ['#6a3093', '#a044ff'],
     purpleBlue: ['#5C258D', '#4389A2'],
     purplePink: ['#7F00FF', '#E100FF'],

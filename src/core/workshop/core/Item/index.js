@@ -1,7 +1,9 @@
 /* ------------------------- External Dependencies -------------------------- */
 import React from 'react'
+import Foundry from 'foundry'
 /* ---------------------------- Module Package ------------------------------ */
-export default ({data, foundry, styled, ...props}) => !foundry ? null
-: (typeof foundry === 'function')
-    ? React.createElement(foundry, {...data, styled})
-    : React.cloneElement(foundry, {...data, styled})
+export default ({data, foundry, styled, ...props}) => !foundry 
+? null
+: !Foundry[foundry]
+  ? null
+  : React.createElement(Foundry[foundry], {...props, data, ...styled}) 

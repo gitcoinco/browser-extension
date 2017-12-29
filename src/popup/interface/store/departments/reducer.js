@@ -3,8 +3,9 @@ import camelCase from 'lodash/camelCase'
 import { combineReducers } from 'redux';
 import { routerReducer as routing } from 'react-router-redux';
 import { reducer as form } from 'redux-form'
-
+import reducerAssimilation from 'assimilation/symbiosis/reducer'
 const reducers = {
+  ...reducerAssimilation,
   routing,
   form,
 }

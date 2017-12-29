@@ -16,9 +16,7 @@ import RegionBranding  from 'layout/regions/RegionBranding'
 /* ---------------------------- Module Package ------------------------------ */
 export default props => (
 <Absolute left right top bottom>
-  <BackgroundGradient gradient="purpleBlue"/>
-  <BackgroundImage src={officeMeeting} o={0.2} />
-
+  <BackgroundGradient gradient="blue"/>
   <RegionTop />
   <RegionBranding/>
   <SiteMainRoutes/>

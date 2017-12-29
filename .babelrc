@@ -1,0 +1,27 @@
+{
+  "presets": [
+    "es2015",
+    "stage-0",
+    "react"
+  ],
+  "plugins": [
+        ["babel-plugin-idx", {
+          "importName": "./idx"
+        }],
+        "transform-regenerator",
+        "transform-class-properties",
+        "transform-object-rest-spread", 
+        "add-module-exports",
+        "dynamic-import-webpack"
+        ],
+  "env": {
+    "production": {
+      "presets": ["react-optimize"]
+    },
+    "development": {
+      "plugins": [
+        "react-hot-loader/babel"
+      ]
+    }
+  }
+}

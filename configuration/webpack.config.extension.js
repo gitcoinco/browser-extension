@@ -35,7 +35,7 @@ module.exports = {
   bail: true,
   devtool: shouldUseSourceMap ? 'source-map' : false,
   entry: {
-    popup: ['babel-polyfill', "react-hot-loader/patch", path.join(__dirname, "../", "src", "popup", "index.js")],
+    popup: ['babel-polyfill', path.join(__dirname, "../", "src", "popup", "index.js")],
     options: path.join(__dirname, "../", "src", "options.js"),
     background: path.join(__dirname,  "../", "src", "background.js"),
   },
@@ -58,17 +58,18 @@ module.exports = {
     // https://github.com/facebookincubator/create-react-app/issues/290
     extensions: ['.web.js', '.js', '.json', '.web.jsx', '.jsx'],
     alias: {
-     extensionStore: path.resolve(__dirname, '../src/popup/interface/store'),
+      extensionStore: path.resolve(__dirname, '../src/popup/interface/store'),
       extensionTheme: path.resolve(__dirname, '../src/popup/interface/theme'),
       extensionContainers: path.resolve(__dirname, '../src/popup/interface/containers'),
       layout: path.resolve(__dirname, '../src/popup/interface/layout'),
-      workshop: path.resolve(__dirname, '../src/popup/interface/workshop'),
+      smithing: path.resolve(__dirname, '../src/popup/interface/smithing'),
 
       /*--- Level 1 ---*/
       settings: path.resolve(__dirname, '../src/popup/settings'),
       static: path.resolve(__dirname, '../src/popup/static'),
 
       /*--- Components ---*/
+      workshop: path.resolve(__dirname, '../src/core/workshop'),
       atomic: path.resolve(__dirname, '../src/core/components/atomic'),
       quarks: path.resolve(__dirname, '../src/core/components/atomic/quarks'),
       particles: path.resolve(__dirname, '../src/core/components/atomic/particles'),
@@ -80,7 +81,6 @@ module.exports = {
       providers: path.resolve(__dirname, '../src/core/components/providers'),
 
       /*--- Interface ---*/
-      smithing: path.resolve(__dirname, '../src/core/smithing'),
       assets: path.resolve(__dirname, '../src/core/assets'),
       assimilation: path.resolve(__dirname, '../src/core/assimilation'),
       containers: path.resolve(__dirname, '../src/core/containers'),
@@ -91,7 +91,7 @@ module.exports = {
       services: path.resolve(__dirname, '../src/core/logic/services'),
       store: path.resolve(__dirname, '../src/core/store'),
       theme: path.resolve(__dirname, '../src/core/theme'),
-      'mapbox-gl$': path.resolve('./node_modules/mapbox-gl/dist/mapbox-gl.js')
+
     },
     plugins: [
       // Prevents users from importing files from outside of src/ (or node_modules/).

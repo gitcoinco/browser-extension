@@ -10,8 +10,8 @@ Button.defaultProps = {
   boxShadow: 0,
   color: 'white',
   f: [2],
-  py: [5, 22.5],
-  px: [10, 17.5],
+  py: [5, 10],
+  px: [10, 13.5],
   ts: ['lightHaze'],
   hover: { 
     boxShadow: 2,

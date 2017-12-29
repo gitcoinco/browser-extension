@@ -1,21 +1,21 @@
 /* ------------------------- External Dependencies -------------------------- */
 import React from 'react';
-import { Switch } from 'react-router-dom';
+import { Switch } from 'react-router'
 import Route from 'molecules/Route' 
-import FirestoreList from 'containers/firestore/FirestoreList'
+import SearchGlobal from 'smithing/forms/search/SearchGlobal'
+import BlockOrganizations from 'smithing/blocks/BlockOrganizations'
+import BlockBounties from 'smithing/blocks/BlockBounties'
+import BountySearch from 'containers/bounty/BountySearch'
+import BountyItem from 'containers/bounty/BountyItem'
 /* ------------------------- External Dependencies -------------------------- */
-import Front from 'smithing/pages/main/Front'
-export default () => (
-  <div>
-    <Switch>
-      <Route exact path="/" component={FirestoreList} 
-        collection='projects'
-        delta='ProjectSearch'
-        entity='project'
-        foundry={'CardRealEstate'}
-        styled={{
-          w: [1],
-        }}
-      />
-    </Switch>
-  </div>);
+const Landing = props=>
+<div>
+  <SearchGlobal/>
+  <BountySearch/>
+</div>
+export default () =>
+<Switch>
+
+  <Route exact path="/" component={Landing} />
+  <Route path="/bounty/:uid" component={BountyItem} />
+</Switch>

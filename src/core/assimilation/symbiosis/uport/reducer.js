@@ -158,6 +158,13 @@ export default (state = initialState, {type, payload, metadata}) => {
             ...state[metadata.delta],
             status: true,
             data: payload
+          },
+          credentials: {
+            ...state.credentials,
+            data: {
+              ...state.credentials.data,
+              ...payload
+            }
           }
         }
       case UPORT_GET_ATTEST_CREDENTIALS_FAILURE:

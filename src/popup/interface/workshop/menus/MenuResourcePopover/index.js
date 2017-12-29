@@ -11,7 +11,7 @@ import {FirestoreList, PopoverPure } from 'containers'
 import DialogOpen from 'containers/dialog/DialogOpen'
 import PopoverClose from 'containers/popover/PopoverClose'
 /* ------------------------------- Component -------------------------------- */
-const Body = props => <Box w={[1,1,675]} bs={4} br={10} >
+const Body = props => <Box w={[1,1,675]} bs={4} borderRadius={10} >
   <Flex direction={['column', 'row']} >
     <Box w={[1,1,0.45]} bg='sand' p={[10,15]} bs={1} >
       <Heading level={[3]} f={[3,4]}color='blue'>Resources</Heading>
