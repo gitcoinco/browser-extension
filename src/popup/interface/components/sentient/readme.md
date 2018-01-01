@@ -1,2 +1,0 @@
-# Sentient
-The Sentient Components are built for unique application environments. In contrast, to Atomic and Fusion components,which likely move from project to project, the Sentience Components are built specific to application requirements.

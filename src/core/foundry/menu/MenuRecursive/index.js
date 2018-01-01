@@ -6,7 +6,7 @@ import styled from 'styled-components'
 import assets from 'assets'
 import { Flex, Box } from 'particles'
 import { BackgroundGradient, Container, Heading, Link, Paragraph, Section, SVG} from 'atomic'
-import { DrawerLink } from 'fusion'
+import DrawerLink from 'foundry/drawer/DrawerLink'
 import { PopoverPure } from 'containers'
 import { MenuRecursive as MenuAsideItemRecurse } from 'foundry'
 /* ------------------------------- Component -------------------------------- */

@@ -77,7 +77,7 @@ module.exports = {
       extensionTheme: path.resolve(__dirname, '../src/popup/interface/theme'),
       extensionContainers: path.resolve(__dirname, '../src/popup/interface/containers'),
       layout: path.resolve(__dirname, '../src/popup/interface/layout'),
-      workshop: path.resolve(__dirname, '../src/popup/interface/workshop'),
+      workshop: path.resolve(__dirname, '../src/core/workshop'),
       smithing: path.resolve(__dirname, '../src/popup/interface/smithing'),
 
       /*--- Level 1 ---*/
