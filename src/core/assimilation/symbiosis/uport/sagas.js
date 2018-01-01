@@ -78,7 +78,6 @@ function* getCredentials({payload, metadata}) {
       message: `Welcome ${credentials.name} to Eidenai`
     }}))
   } catch(e) {
-    console.log(e)
     yield put(uPortGetCredentialsFailure({payload: e, metadata}))
     yield put(notificationOpen({payload:{
       title: 'Failure: Identity Request ',
