@@ -5,7 +5,7 @@
   "content_scripts": 
   [
     {
-      "matches": ["*://*/*"],
+      "matches": ["https://github.com/*"],
       "js": ["script/pageload/functions.js", "script/pageload/body.js", "script/pageload/callbacks.js"],
       "run_at": "document_end"
     }
@@ -25,7 +25,8 @@
   "permissions": [
     "activeTab",
     "https://ajax.googleapis.com/",
-    "https://gitcoin.co/"
+    "https://gitcoin.co/",
+    "https://*.github.com/*"
   ],
   "background":
   {
