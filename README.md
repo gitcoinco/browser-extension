@@ -21,6 +21,7 @@ The configuration for the build process is ```configuration/webpack.config.exten
 The configuration for development is ```configuration/webpack.config.extension.dev.js```
 
 ```
+npm install || yarn
 npm run build || yarn build <---- Bundles Chrome Extension
 npm run start || yarn start <---- React Hot Loading for Popup Development (localhost: 3000)
 ```
