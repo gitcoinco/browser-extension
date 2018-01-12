@@ -1,4 +1,10 @@
 //function defs
+var status_to_color = {
+  open: "green",
+  claimed: "blue",
+  fulfilled: "purple"
+}
+
 var injectScript = function(script){
     var elt = document.createElement("script");
     elt.innerHTML = script;
@@ -14,7 +20,7 @@ var insertAfter = function(newNode, referenceNode) {
 }
 
 getAllBounties = function(){
-  var bounties_api_url = 'https://gitcoin.co/api/v0.1/bounties/?idx_status=open&network=mainnet&order_by=-web3_created';
+  var bounties_api_url = 'https://gitcoin.co/api/v0.1/bounties/?network=mainnet&order_by=-web3_created';
   var xmlHttp = new XMLHttpRequest();
   xmlHttp.open( "GET", bounties_api_url, false ); // false for synchronous request
   xmlHttp.send( null );
@@ -22,7 +28,7 @@ getAllBounties = function(){
 }
 
 getBountiesForRepo = function(github_url) {
-  var bounties_api_url = "https://gitcoin.co/api/v0.1/bounties/?idx_status=open&network=mainnet&github_url=" + github_url;
+  var bounties_api_url = "https://gitcoin.co/api/v0.1/bounties/?network=mainnet&github_url=" + github_url;
   var xmlHttp = new XMLHttpRequest();
   xmlHttp.open( "GET", bounties_api_url, false ); // false for synchronous request
   xmlHttp.send( null );
@@ -30,7 +36,7 @@ getBountiesForRepo = function(github_url) {
 } 
 
 getBountiesForKeyword = function(keyword) {
-  var bounties_api_url = "https://gitcoin.co/api/v0.1/bounties/?order_by=web3_created&network=mainnet&idx_status=open";
+  var bounties_api_url = "https://gitcoin.co/api/v0.1/bounties/?order_by=web3_created&network=mainnet";
   var xmlHttp = new XMLHttpRequest();
   xmlHttp.open( "GET", bounties_api_url, false ); // false for synchronous request
   xmlHttp.send( null );
@@ -67,17 +73,12 @@ injectGetAllBountiesOnIssuesPage = function(){
               bounty_badge.href = bounty_url;
               gitcoin_logo.src = "https://avatars1.githubusercontent.com/u/30044474?v=4";
               gitcoin_logo.setAttribute("style", "width: 16px;") 
-              bounty_badge.setAttribute("style", `background: green;color: white; top: 9 right: 155px; display: inline-block; padding: 3px 4px;
+              bounty_badge.setAttribute("style", `background: ${status_to_color[bounty_status]};color: white; top: 9 right: 155px; display: inline-block; padding: 3px 4px;
                 font-size: 12px; font-weight: 600; line-height: 1; color: #fff; border-radius: 2px; display: inline-flex; 
                 box-shadow: inset 0 -1px 0 rgba(27,31,35,0.12); flex-direction: row; flex-wrap: wrap; height: 22px; align-items: center; 
-                justify-content: center; cursor: pointer`);
-              if (bounty_status === "open") {
-                var text = document.createTextNode("Open · $" + bounty_value);
-              } else if (bounty_status === "claimed") {
-                var text = document.createTextNode("Claimed · $" + bounty_value);
-              } else {
-                var text = document.createTextNode("Fulfilled · $" + bounty_value);
-              }
+                justify-content: center; cursor: pointer; text-transform:capitalize;`);
+              
+              var text = document.createTextNode(bounty_status + " · $" + bounty_value);
               
               bounty_badge_text.appendChild(text);
               insertAfter(bounty_badge, issue_nodes[i])
@@ -107,18 +108,12 @@ injectGetAllBountiesOnIssueBoard = function() {
         bounty_badge.href = bounty_url;
         gitcoin_logo.src = "https://avatars1.githubusercontent.com/u/30044474?v=4";
         gitcoin_logo.setAttribute("style", "width: 16px;") 
-        bounty_badge.setAttribute("style", `background: green;color: white; top: 9 right: 155px; display: inline-block; padding: 3px 4px;
+        bounty_badge.setAttribute("style", `background: ${status_to_color[bounty_status]};color: white; top: 9 right: 155px; display: inline-block; padding: 3px 4px;
           font-size: 12px; font-weight: 600; line-height: 1; color: #fff; border-radius: 2px; display: inline-flex; 
           box-shadow: inset 0 -1px 0 rgba(27,31,35,0.12); flex-direction: row; flex-wrap: wrap; height: 22px; align-items: center; 
-          justify-content: center; cursor: pointer`);
+          justify-content: center; cursor: pointer; text-transform:capitalize;`);
         if (issue_nodes[i].nextSibling === null) {
-          if (bounty_status === "open") {
-            var text = document.createTextNode("Open · $" + bounty_value);
-          } else if (bounty_status === "claimed") {
-            var text = document.createTextNode("Claimed · $" + bounty_value);
-          } else {
-            var text = document.createTextNode("Fulfilled · $" + bounty_value);
-          }
+          var text = document.createTextNode(bounty_status + " · $" + bounty_value);
 
           bounty_badge_text.appendChild(text);
           insertAfter(bounty_badge, issue_nodes[i])
@@ -169,21 +164,33 @@ var addBountyInfoToIssuePage = function(url) {
     var bounty_eth_value = all_bounties[0].value_true;
     var bounty_usdt_value = all_bounties[0].value_in_usdt;
     var bounty_status = all_bounties[0].status;
-    if (bounty_status === "open") {
-      var text = document.createTextNode(`Claim issue · $${bounty_usdt_value}`);
-      bounty_text.appendChild(text);
-    } else if (bounty_status === "fulfilled") {
-      var text = document.createTextNode(`Fulfilled issue · $${bounty_usdt_value}`);
-      bounty_text.appendChild(text);
-    } else {
-      var text = document.createTextNode(`Claimed issue · $${bounty_usdt_value}`);
-      bounty_text.appendChild(text);
-    } 
+    getTextNodeForBounty(bounty_status);
+    decorateButtonWithBountyStatus(bounty_status, bounty_anchor);
+    bounty_text.appendChild(getTextNodeForBounty(bounty_status, bounty_usdt_value));
   } else {
     var text = document.createTextNode(`Fund issue`);
     bounty_text.appendChild(text);
   }
   bounty_anchor.appendChild(bounty_text)
+}
+
+var getTextNodeForBounty = function(status, value) {
+  var status_to_button_text = {
+    "open" : "Claim issue",
+    "fulfilled" : "Fulfilled issue",
+    "claimed" : "Claimed issue"
+  }
+  return document.createTextNode(`${status_to_button_text[status]} · $${value}`);
+}
+
+var decorateButtonWithBountyStatus = function(status, button_node) {
+  var status_to_class_name = {
+    "fulfilled" : "btn-purple",
+    "claimed" : "btn-blue"
+  }
+  if(status_to_class_name[status]) {
+    button_node.classList.add(status_to_class_name[status]);
+  }
 }
 
 var humanize = function(amount){
