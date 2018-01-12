@@ -104,6 +104,7 @@ var appendTableNodes = function(bounties) {
               <td>'+timeDifference(new Date(), new Date(bounty['web3_created']))+'</td> \
               <td>'+val+' '+bounty['token_name']+'</td> \
               <td>'+limitStr(bounty['title'],30)+'</td> \
+              <td>'+limitStr(bounty['status'],30)+'</td> \
               <td><a class=target target=_blank href="'+bounty['github_url']+'">View >></a></td> \
             </tr> \
             ';
@@ -186,6 +187,7 @@ $(document).ready(function(){
                       <td>'+timeDifference(new Date(), new Date(result['web3_created']))+'</td> \
                       <td>'+val+' '+result['token_name']+'</td> \
                       <td>'+limitStr(result['title'],30)+'</td> \
+                      <td>'+limitStr(result['status'],30)+'</td> \
                       <td><a class=target target=_blank href="'+result['github_url']+'">View >></a></td> \
                     </tr> \
                     ';
