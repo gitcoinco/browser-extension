@@ -15,7 +15,8 @@ var body = function(url) {
     var isOnIssuesPage = url.indexOf('/issues') !== -1;
     var isAlreadyGitcoinBounty = document.getElementsByClassName('gitcoin_bounty').length >= 1;
     var isOnIssueBoard = url.indexOf('boards') !== -1;
-    
+    var fullRepositoryName = url.split("/").splice(3,2).join("/");
+
     // Location | User Profile
     if(isOnUserProfile && !isAlreadyGitcoinBounty ) {
         addButtonToUserPage();
@@ -34,10 +35,10 @@ var body = function(url) {
     }
 
     if (isOnIssuesPage) {
-        injectGetAllBountiesOnIssuesPage();
+        injectGetAllBountiesOnIssuesPage(fullRepositoryName);
     }
     if (isOnIssueBoard) {
-        injectGetAllBountiesOnIssueBoard(); 
+        injectGetAllBountiesOnIssueBoard(fullRepositoryName); 
     }
 }
 
