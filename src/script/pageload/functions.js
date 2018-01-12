@@ -48,19 +48,21 @@ getBountiesForKeyword = function(keyword) {
   return matching_bounties;
 } 
 
-injectGetAllBountiesOnIssuesPage = function(){
+injectGetAllBountiesOnIssuesPage = function(repositoryName){
         var issue_nodes = document.getElementsByClassName('link-gray-dark');
-        var all_bounties = getAllBounties();
+        var bounties_for_repository = getBountiesForRepository(getAllBounties(), repositoryName);
         for (var i = issue_nodes.length - 1; i >= 0; i--) {
-          var issue_name = issue_nodes[i].innerHTML.trim()
-          for (var j = all_bounties.length - 1; j >= 0; j--) {
-            var bounty_name = all_bounties[j].title
-            var bounty_value = all_bounties[j].value_in_usdt
-            var github_url = issue_nodes[i].href
+          var issue_node = issue_nodes[i];
+          var issue_name = issue_node.innerHTML.trim()
+          for (var j = bounties_for_repository.length - 1; j >= 0; j--) {
+            var bounty = bounties_for_repository[j];
+            var bounty_name = bounty.title
+            var bounty_value = bounty.value_in_usdt
+            var github_url = issue_node.href
             var bounty_url = "https://gitcoin.co/funding/details?url=" + github_url
-            var bounty_status = all_bounties[j].status;
+            var bounty_status = bounty.status;
 
-            if (issue_name == bounty_name) {
+            if (issue_name === bounty_name) {
               var bounty_badge = document.createElement("a");
               var bounty_badge_text = document.createElement("span");
               var gitcoin_logo = document.createElement("img");
@@ -80,7 +82,7 @@ injectGetAllBountiesOnIssuesPage = function(){
               }
               
               bounty_badge_text.appendChild(text);
-              insertAfter(bounty_badge, issue_nodes[i])
+              insertAfter(bounty_badge, issue_node)
               bounty_badge.prepend(gitcoin_logo)
               bounty_badge.append(bounty_badge_text)
             }
@@ -88,17 +90,20 @@ injectGetAllBountiesOnIssuesPage = function(){
         }
 }
 
-injectGetAllBountiesOnIssueBoard = function() {
+
+injectGetAllBountiesOnIssueBoard = function(repositoryName) {
   var issue_nodes = document.getElementsByClassName('zhc-issue-card__issue-title');
   var issue_parent_nodes = document.getElementsByClassName('zhc-issue-card');
-  var all_bounties = getAllBounties();
+  var bounties_for_repository = getBountiesForRepository(getAllBounties(), repositoryName);
   for (var i = issue_nodes.length - 1; i >= 0; i--) {
-    var issue_name = issue_nodes[i].innerHTML.trim()
-    for (var j = all_bounties.length - 1; j >= 0; j--) {
-      var bounty_name = all_bounties[j].title;
-      var bounty_value = all_bounties[j].value_in_usdt;
-      var bounty_status = all_bounties[j].status;
-      var bounty_url = "https://gitcoin.co" + all_bounties[i].url;
+    var issue_node = issue_nodes[i];
+    var issue_name = issue_node.innerHTML.trim()
+    for (var j = bounties_for_repository.length - 1; j >= 0; j--) {
+      var bounty = bounties_for_repository[j];
+      var bounty_name = bounty.title;
+      var bounty_value = bounty.value_in_usdt;
+      var bounty_status = bounty.status;
+      var bounty_url = "https://gitcoin.co" + bounty.url;
 
       if (issue_name == bounty_name) {
         var bounty_badge = document.createElement("a");
@@ -111,7 +116,7 @@ injectGetAllBountiesOnIssueBoard = function() {
           font-size: 12px; font-weight: 600; line-height: 1; color: #fff; border-radius: 2px; display: inline-flex; 
           box-shadow: inset 0 -1px 0 rgba(27,31,35,0.12); flex-direction: row; flex-wrap: wrap; height: 22px; align-items: center; 
           justify-content: center; cursor: pointer`);
-        if (issue_nodes[i].nextSibling === null) {
+        if (issue_node.nextSibling === null) {
           if (bounty_status === "open") {
             var text = document.createTextNode("Open · $" + bounty_value);
           } else if (bounty_status === "claimed") {
@@ -121,7 +126,7 @@ injectGetAllBountiesOnIssueBoard = function() {
           }
 
           bounty_badge_text.appendChild(text);
-          insertAfter(bounty_badge, issue_nodes[i])
+          insertAfter(bounty_badge, issue_node)
           bounty_badge.prepend(gitcoin_logo)
           bounty_badge.append(bounty_badge_text)
         }
@@ -333,4 +338,9 @@ var injectWeb3Context = function(){
   injectScript(injectGetBalance);
 
   }, 1000);
+}
+
+
+var getBountiesForRepository = function(bounties, repositoryName) {
+  return bounties.filter(bounty => bounty.github_url.indexOf(repositoryName + "/") > 0);
 }
