@@ -4,11 +4,15 @@
   "description": "Push Open Source Forward.  The easiest way to monetize your work in open source software.",
   "dependencies": {},
   "devDependencies": {
+    "jquery": "^3.3.1",
     "web-ext": "^2.2.2"
   },
   "scripts": {
     "lint": "npx web-ext lint -s src",
-    "build:firefox": "npx web-ext build -s src --overwrite-dest"
+    "copy_jquery": "cp node_modules/jquery/dist/jquery.js src/script/popup/jquery.js",
+    "prebuild": "npm run copy_jquery",
+    "build:firefox": "npx web-ext build -s src --overwrite-dest",
+    "build": "npm run build:firefox"
   },
   "repository": {
     "type": "git",
