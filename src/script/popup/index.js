@@ -140,19 +140,19 @@ if (isOnGitHubcom && isOnRepo) {
 
 $(document).ready(function(){
 
-    $('.search-button').click(function() {
+    $('.search-button').on('click', function() {
         let keyword = document.getElementById('search_bar').value;
         searchBounties(keyword)
     });
 
-    $('#search_bar').keypress(function(e) {
+    $('#search_bar').on('keypress', function(e) {
         if (e.which === 13) {
             let keyword = document.getElementById('search_bar').value;
             searchBounties(keyword);    
         }
     });
 
-    $('input[name=Tip]').click(function() {
+    $('input[name=Tip]').on('click', function() {
         var username = $('input[name=username]').val();
         if (username === '') {
             alert('Invalid username');
@@ -175,7 +175,7 @@ $(document).ready(function(){
     }
 
     var bounties_api_url = 'https://gitcoin.co/api/v0.1/bounties/?idx_status=open&order_by=-web3_created';
-    $.get(bounties_api_url,function(results){
+    fetch(bounties_api_url).then(res => res.json()).then(results => {
         if(results.length == 0){
             $("#openbounties tbody").append('No Bounties Found');
         }
@@ -201,10 +201,9 @@ $(document).ready(function(){
                 $("#openbounties tbody").append(newHTML);
             }
         }
-    }).error(function(){
-            $("#openbounties tbody").append('Error: Could not reach api.');
-    });;
-
+    }).catch((e) => {
+        $("#openbounties tbody").append('Error: Could not reach api: ' + e);
+    });
 
     $("#bounty a").attr('href', 'https://gitcoin.co/funding/new' + "?" + '&user=' + localStorage['githubusername'] + "&source=" + localStorage['browser_location']);
 
