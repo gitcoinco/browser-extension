@@ -22,7 +22,7 @@ var insertAfter = function(newNode, referenceNode) {
 getAllBounties = function(){
   var bounties_api_url = 'https://gitcoin.co/api/v0.1/bounties/?network=mainnet&order_by=-web3_created';
   var xmlHttp = new XMLHttpRequest();
-  xmlHttp.open( "GET", bounties_api_url, false ); // false for synchronous request
+  xmlHttp.open( "GET", bounties_api_url, true ); // true for asynchronous request
   xmlHttp.send( null );
   return JSON.parse(xmlHttp.responseText);
 }
@@ -30,7 +30,7 @@ getAllBounties = function(){
 getBountiesForRepo = function(github_url) {
   var bounties_api_url = "https://gitcoin.co/api/v0.1/bounties/?network=mainnet&github_url=" + github_url;
   var xmlHttp = new XMLHttpRequest();
-  xmlHttp.open( "GET", bounties_api_url, false ); // false for synchronous request
+  xmlHttp.open( "GET", bounties_api_url, true ); // true for asynchronous request
   xmlHttp.send( null );
   return JSON.parse(xmlHttp.responseText);
 } 
@@ -38,7 +38,7 @@ getBountiesForRepo = function(github_url) {
 getBountiesForKeyword = function(keyword) {
   var bounties_api_url = "https://gitcoin.co/api/v0.1/bounties/?order_by=web3_created&network=mainnet";
   var xmlHttp = new XMLHttpRequest();
-  xmlHttp.open( "GET", bounties_api_url, false ); // false for synchronous request
+  xmlHttp.open( "GET", bounties_api_url, true ); // true for asynchronous request
   xmlHttp.send( null );
   var all_bounties = JSON.parse(xmlHttp.responseText);
   matching_bounties = [];

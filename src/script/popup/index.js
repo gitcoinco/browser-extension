@@ -79,8 +79,8 @@ var limitStr = function(str,len) {
 
 var createItem = function(imgsrc, timeDiff, tokenName, title, state, linkUrl) {
     let img = document.createElement('img');
-    img.height = '20px';
-    img.width = '20px';
+    img.style.height = '20px';
+    img.style.width = '20px';
     img.src = imgsrc;
     let tr = document.createElement('tr');
     let tdImg = document.createElement('td');
@@ -95,7 +95,7 @@ var createItem = function(imgsrc, timeDiff, tokenName, title, state, linkUrl) {
     let textLimit = document.createTextNode(title);
     tdLimit.appendChild(textLimit);
     let tdStatus = document.createElement('td');
-    let textStatus = document.createTextNode(status);
+    let textStatus = document.createTextNode(state);
     tdStatus.appendChild(textStatus);
     tdLink = document.createElement('td');
     let githubLink = document.createElement('a');
@@ -187,7 +187,7 @@ $(document).ready(function() {
     }
 
     if(!isweb3()){
-        addMessage('warning',`Metamask not detected.  <a target=_blank href='https://chrome.google.com/webstore/detail/metamask/nkbihfbeogaeaoehlefnkodbefgpgknn?hl=en'>Please install metamask to proceed.</a>`);
+        addMessage('warning',`Metamask not detected.  Please install metamask to proceed.`);
     }else if(!isweb3unlocked()){
         addMessage('warning','Metamask locked.  Try unlocking it & refreshing.');
     } else {

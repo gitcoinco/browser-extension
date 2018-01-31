@@ -18,6 +18,7 @@ var body = function(url) {
     
     // Location | User Profile
     if(isOnUserProfile && !isAlreadyGitcoinBounty ) {
+        console.log(isAlreadyGitcoinBounty);
         addButtonToUserPage();
     }
 
