@@ -18,14 +18,13 @@ var body = function(){
     var isOnIssuesPage = isOnGitHub && url.indexOf('/issues') != -1;
     var isAlreadyGitcoinBounty = document.getElementsByClassName('gitcoin_bounty').length >= 1;
     var isOnIssueBoard = isOnGitHub && url.indexOf('boards') != -1;
-    
 
     // Location | User Profile
     if(isOnUserProfile && !isAlreadyGitcoinBounty ){
         addButtonToUserPage();
     }
     // Location | Issue Page
-    if (isOnIssuePage){
+    if (isOnIssuePage && !isAlreadyGitcoinBounty){
             addButtonToIssuePage();
             addBountyInfoToIssuePage(url);
             injectGetBountyAmount();
@@ -52,6 +51,6 @@ setInterval(function() {
         body();
     }
     hasRun = true;
-}, 1000);
+}, 2000);
 
 

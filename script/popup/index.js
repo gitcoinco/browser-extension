@@ -117,7 +117,7 @@ var searchBounties = function(keyword) {
   keyword = keyword.toLowerCase();
   var matching_bounties = []
   for (var i = all_bounties.length - 1; i >= 0; i--) {
-    var bounty_keywords = JSON.parse(all_bounties[i].raw_data[8]).issueKeywords.toLowerCase();
+    var bounty_keywords = all_bounties[i].issue_description_text.toLowerCase();
     var bounty_title = all_bounties[i].title.toLowerCase();
     var do_keywords_contain = bounty_keywords.indexOf(keyword) !== -1;
     var does_title_contain = bounty_title.indexOf(keyword) !== -1;
