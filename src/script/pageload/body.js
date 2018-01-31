@@ -23,7 +23,8 @@ var body = function(url) {
     }
 
     // Location | Issue Page
-    if (isOnIssuePage) {
+    if (isOnIssuePage && !isAlreadyGitcoinBounty) {
+        console.log(isAlreadyGitcoinBounty);
         addButtonToIssuePage();
         addBountyInfoToIssuePage(url);
         injectGetBountyAmount();
