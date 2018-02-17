@@ -1,12 +1,16 @@
 //function defs
+var browser = browser || chrome;
+
 var injectScript = function(script){
-    var elt = document.createElement("script");
-    elt.innerHTML = script;
-    document.head.appendChild(elt);
+    var script = document.createElement("script");
+    console.log(script);
+    script.type = 'text/javascript';
+    script.src = 'url';
+    document.head.appendChild(script);
 }
 
 var setThumbnail = function(text){
-    chrome.extension.sendMessage(text);
+    browser.runtime.sendMessage(text);
 };
 
 var insertAfter = function(newNode, referenceNode) {
