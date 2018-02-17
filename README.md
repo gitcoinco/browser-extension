@@ -6,6 +6,15 @@ Gitcoin pushes Open Source Forward.  Learn more at [https://gitcoin.co](https://
 
 [Star](https://github.com/gitcoinco/chrome_ext/stargazers) and [watch](https://github.com/gitcoinco/chrome_ext/watchers) this github repository to stay up to date, we're pushing new code several times per week!
 
+## Install for Firefox
+
+```
+npm install --global web-ext
+web-ext build
+```
+
+Upload zip to Firefox Add-on Developer Hub
+
 # Chrome Extension
 
 ## Get It Today
