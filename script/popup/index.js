@@ -156,16 +156,6 @@ $(document).ready(function(){
         $("#username").text("@" + localStorage['githubusername'] );
     }
 
-    if(!isweb3()){
-        addMessage('warning',"Metamask not detected.  <a target=_blank href='https://chrome.google.com/webstore/detail/metamask/nkbihfbeogaeaoehlefnkodbefgpgknn?hl=en'>Please install metamask to proceed.</a>")
-    }else if(!isweb3unlocked()){
-        addMessage('warning',"Metamask locked.  Try unlocking it & refreshing.")
-    } else {
-        $('#address').text(limitStr(web3account(),10));
-        $('#address').attr('href','https://etherscan.io/address/'+web3account());
-        $('#balance').text(localStorage['ethbalance']);
-    }
-
     var bounties_api_url = 'https://gitcoin.co/api/v0.1/bounties/?idx_status=open&network=mainnet&order_by=-web3_created';
     $.get(bounties_api_url,function(results){
         if(results.length == 0){
