@@ -140,14 +140,21 @@ if (isOnGitHubcom && isOnRepo) {
 $(document).ready(function(){
 
     $('.search-button').click(function() {
-        var keyword = document.getElementById('search_bar').value;
+        let keyword = document.getElementById('search_bar').value;
         searchBounties(keyword)
-    })
+    });
 
-    $('input[name=Tip]').click(function(){
-        var username = $("input[name=username]").val()
-        if (username == ""){
-            alert("Invalid username");
+    $('#search_bar').keypress(function(e) {
+        if (e.which === 13) {
+            let keyword = document.getElementById('search_bar').value;
+            searchBounties(keyword);    
+        }
+    });
+
+    $('input[name=Tip]').click(function() {
+        var username = $('input[name=username]').val();
+        if (username === '') {
+            alert('Invalid username');
         } else {
             $("#tip").html('Transaction has been submitted to the blockchain.')
         }
@@ -157,9 +164,9 @@ $(document).ready(function(){
     }
 
     if(!isweb3()){
-        addMessage('warning',"Metamask not detected.  <a target=_blank href='https://chrome.google.com/webstore/detail/metamask/nkbihfbeogaeaoehlefnkodbefgpgknn?hl=en'>Please install metamask to proceed.</a>")
+        addMessage('warning',`Metamask not detected.  <a target=_blank href='https://chrome.google.com/webstore/detail/metamask/nkbihfbeogaeaoehlefnkodbefgpgknn?hl=en'>Please install metamask to proceed.</a>`);
     }else if(!isweb3unlocked()){
-        addMessage('warning',"Metamask locked.  Try unlocking it & refreshing.")
+        addMessage('warning','Metamask locked.  Try unlocking it & refreshing.');
     } else {
         $('#address').text(limitStr(web3account(),10));
         $('#address').attr('href','https://etherscan.io/address/'+web3account());
@@ -200,5 +207,3 @@ $(document).ready(function(){
     $("#bounty a").attr('href', 'https://gitcoin.co/funding/new' + "?" + '&user=' + localStorage['githubusername'] + "&source=" + localStorage['browser_location']);
 
 });
-
-
