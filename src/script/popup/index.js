@@ -200,5 +200,3 @@ $(document).ready(function(){
     $("#bounty a").attr('href', 'https://gitcoin.co/funding/new' + "?" + '&user=' + localStorage['githubusername'] + "&source=" + localStorage['browser_location']);
 
 });
-
-
