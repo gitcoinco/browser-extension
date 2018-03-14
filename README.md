@@ -6,13 +6,15 @@ Gitcoin pushes Open Source Forward.  Learn more at [https://gitcoin.co](https://
 
 [Star](https://github.com/gitcoinco/chrome_ext/stargazers) and [watch](https://github.com/gitcoinco/chrome_ext/watchers) this github repository to stay up to date, we're pushing new code several times per week!
 
-# Chrome Extension
-
 ## Get It Today
 
-The Chrome extension is live on the Google Chrome Store.  [Get it here](https://gitcoin.co/extension).
+The [Chrome extension](https://gitcoin.co/extensions/chrome) is live. Go get it now.
 
-## What it Do
+<a href="https://gitcoin.co/extension">
+<img src="https://d3vv6lp55qjaqc.cloudfront.net/items/062d2k3t43040c2u2e2H/Image%202017-09-25%20at%204.12.56%20AM.png"/>
+</a>
+
+## What Does This Extension Do
 
 ### Browse Work Directly on Github
 
@@ -30,14 +32,6 @@ The Chrome extension is live on the Google Chrome Store.  [Get it here](https://
 
 <img src='readme/tip.png'>
 
-
-## Get It Today
-
-The Chrome extension is live on the Google Chrome Store.  [Get it here](https://gitcoin.co/extension).
-
-<a href="https://gitcoin.co/extension">
-<img src="https://d3vv6lp55qjaqc.cloudfront.net/items/062d2k3t43040c2u2e2H/Image%202017-09-25%20at%204.12.56%20AM.png"/>
-</a>
 
 # Legal
 
@@ -62,4 +56,3 @@ The Chrome extension is live on the Google Chrome Store.  [Get it here](https://
 
 <!-- Google Analytics -->
 <img src='https://ga-beacon.appspot.com/UA-102304388-1/gitcoinco/chrome_ext' style='width:1px; height:1px;' >
-
