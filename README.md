@@ -1,5 +1,7 @@
 <img src='https://d3vv6lp55qjaqc.cloudfront.net/items/263e3q1M2Y2r3L1X3c2y/helmet.png'/>
 
+This Extension allows users to find new & interesting work, right where you work, on github.com.
+
 # Gitcoin
 
 Gitcoin pushes Open Source Forward.  Learn more at [https://gitcoin.co](https://gitcoin.co)
@@ -12,7 +14,12 @@ Gitcoin pushes Open Source Forward.  Learn more at [https://gitcoin.co](https://
 
 The Browser extension is live on the Google Chrome Store.  [Get it here](https://gitcoin.co/extension).
 
-## What it does
+<a href="https://gitcoin.co/extension">
+<img src="https://d3vv6lp55qjaqc.cloudfront.net/items/062d2k3t43040c2u2e2H/Image%202017-09-25%20at%204.12.56%20AM.png"/>
+</a>
+
+## What Does This Extension Do
+=======
 
 ### Browse Work Directly on Github
 
@@ -31,18 +38,38 @@ The Browser extension is live on the Google Chrome Store.  [Get it here](https:/
 <img src='readme/tip.png'>
 
 
-## Get It Today
+# How to build the extension
 
-The Chrome extension is live on the Google Chrome Store.  [Get it here](https://gitcoin.co/extension).
+Clone the repo, then
 
-<a href="https://gitcoin.co/extension">
-<img src="https://d3vv6lp55qjaqc.cloudfront.net/items/062d2k3t43040c2u2e2H/Image%202017-09-25%20at%204.12.56%20AM.png"/>
-</a>
+```sh
+$ yarn install
+$ yarn build
+```
+
+## How to test without build as extension
+
+Note: this method is only useful for testing the popup page.
+
+To avoid cross domain (CORS) issue when using fetch API, modify `src/constants.js` and change `DEVELOPMENT`'s value:
+
+```js
+const DEVELOPMENT = true
+```
+
+That will use mocked json file in `/public/mock.gitcoin.co.json`.
+
+Then debugging the popup page via `yarn start`.
+
+## Test
+
+Run `yarn test` or `yarn test --coverage` for test and test coverage.
+
 
 # Legal
 
 ```
-    Copyright (C) 2017 Gitcoin Core 
+    Copyright (C) 2017 Gitcoin Core
 
     This program is free software: you can redistribute it and/or modify
     it under the terms of the GNU Affero General Public License as published
@@ -61,5 +88,5 @@ The Chrome extension is live on the Google Chrome Store.  [Get it here](https://
 
 
 <!-- Google Analytics -->
-<img src='https://ga-beacon.appspot.com/UA-102304388-1/gitcoinco/browser-extension' style='width:1px; height:1px;' >
 
+<img src='https://ga-beacon.appspot.com/UA-102304388-1/gitcoinco/browser-extension' style='width:1px; height:1px;' >

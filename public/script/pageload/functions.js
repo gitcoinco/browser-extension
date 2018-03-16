@@ -40,7 +40,7 @@ getBountiesForRepo = function(github_url, callback) {
       }
     }
   };
-} 
+}
 
 getBountiesForKeyword = function(keyword, callback) {
   var bounties_api_url = "https://gitcoin.co/api/v0.1/bounties/?order_by=web3_created&network=mainnet&idx_status=open";
@@ -66,11 +66,11 @@ getBountiesForKeyword = function(keyword, callback) {
     }
   };
   xmlHttp.send( null );
-} 
+}
 
 injectGetAllBountiesOnIssuesPage = function(){
         var issue_nodes = document.getElementsByClassName('link-gray-dark');
-        console.log('injecting on issue page');
+        // console.log('injecting on issue page');
         getAllBounties(function(all_bounties){
           for (var i = issue_nodes.length - 1; i >= 0; i--) {
             var issue_name = issue_nodes[i].innerHTML.trim()
@@ -87,10 +87,10 @@ injectGetAllBountiesOnIssuesPage = function(){
                 var gitcoin_logo = document.createElement("img");
                 bounty_badge.href = bounty_url;
                 gitcoin_logo.src = "https://avatars1.githubusercontent.com/u/30044474?v=4";
-                gitcoin_logo.setAttribute("style", "width: 16px;") 
+                gitcoin_logo.setAttribute("style", "width: 16px;")
                 bounty_badge.setAttribute("style", `background: green;color: white; top: 9 right: 155px; display: inline-block; padding: 3px 4px;
-                  font-size: 12px; font-weight: 600; line-height: 1; color: #fff; border-radius: 2px; display: inline-flex; 
-                  box-shadow: inset 0 -1px 0 rgba(27,31,35,0.12); flex-direction: row; flex-wrap: wrap; height: 22px; align-items: center; 
+                  font-size: 12px; font-weight: 600; line-height: 1; color: #fff; border-radius: 2px; display: inline-flex;
+                  box-shadow: inset 0 -1px 0 rgba(27,31,35,0.12); flex-direction: row; flex-wrap: wrap; height: 22px; align-items: center;
                   justify-content: center; cursor: pointer`);
                 if (bounty_status === "open") {
                   var text = document.createTextNode("Open · $" + bounty_value);
@@ -99,7 +99,7 @@ injectGetAllBountiesOnIssuesPage = function(){
                 } else {
                   var text = document.createTextNode("Fulfilled · $" + bounty_value);
                 }
-                
+
                 bounty_badge_text.appendChild(text);
                 insertAfter(bounty_badge, issue_nodes[i])
                 bounty_badge.prepend(gitcoin_logo)
@@ -128,10 +128,10 @@ injectGetAllBountiesOnIssueBoard = function() {
           var gitcoin_logo = document.createElement("img");
           bounty_badge.href = bounty_url;
           gitcoin_logo.src = "https://avatars1.githubusercontent.com/u/30044474?v=4";
-          gitcoin_logo.setAttribute("style", "width: 16px;") 
+          gitcoin_logo.setAttribute("style", "width: 16px;")
           bounty_badge.setAttribute("style", `background: green;color: white; top: 9 right: 155px; display: inline-block; padding: 3px 4px;
-            font-size: 12px; font-weight: 600; line-height: 1; color: #fff; border-radius: 2px; display: inline-flex; 
-            box-shadow: inset 0 -1px 0 rgba(27,31,35,0.12); flex-direction: row; flex-wrap: wrap; height: 22px; align-items: center; 
+            font-size: 12px; font-weight: 600; line-height: 1; color: #fff; border-radius: 2px; display: inline-flex;
+            box-shadow: inset 0 -1px 0 rgba(27,31,35,0.12); flex-direction: row; flex-wrap: wrap; height: 22px; align-items: center;
             justify-content: center; cursor: pointer`);
           if (issue_nodes[i].nextSibling === null) {
             if (bounty_status === "open") {
@@ -177,7 +177,7 @@ var addButtonToUserPage = function(){
         tip_anchor.setAttribute("style", "display: flex; flex-direction: row; flex-wrap: wrap; align-items: center; height: 34px; justify-content: center; align-content: center;");
         var gitcoin_logo = document.createElement("img");
         gitcoin_logo.src = "https://avatars1.githubusercontent.com/u/30044474?v=4";
-        gitcoin_logo.setAttribute("style", "width: 22px;") 
+        gitcoin_logo.setAttribute("style", "width: 22px;")
         var text = document.createTextNode("Tip User");
         tip_anchor.appendChild(gitcoin_logo);
         tip_anchor_text.appendChild(text);
@@ -204,7 +204,7 @@ var addBountyInfoToIssuePage = function(url) {
       } else {
         var text = document.createTextNode(`Claimed issue · $${bounty_usdt_value}`);
         bounty_text.appendChild(text);
-      } 
+      }
     } else {
       var text = document.createTextNode(`Fund issue`);
       bounty_text.appendChild(text);
