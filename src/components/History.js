@@ -31,31 +31,15 @@ export class History extends Component {
     this.handleKeyDown = this.handleKeyDown.bind(this);
   }
 
-  componentDidMount() {
+  componentWillMount() {
+    let fetchUrl = DEVELOPMENT ? '/mock.gitcoin.co.json' :
+      BOUNTIES_BASE_URL + 'idx_status=open&order_by=web3_created&network=mainnet';
+
     let url = localStorage['browser_location'];
     let keyword = localStorage['keyword'];
     let isOnGitHubcom = typeof url !== 'undefined' && url.indexOf('://github.com') !== -1 && url.indexOf('://github.com') < 15;
     let isOnRepo = typeof url !== 'undefined' && isOnGitHubcom && url.match(/.+\/.+\/.+\/.+\/?/gi) != null;
 
-    if (isOnGitHubcom && isOnRepo) {
-      var repo = url.split('/')[4];
-      this.filterBounties(repo);
-    }
-
-    if (keyword) {
-      this.setState({keyword});
-      this.filterBounties(keyword);
-    }
-
-    if(localStorage['githubusername']) {
-      this.setState({
-        githubUsername: localStorage['githubusername'],
-        browserLocation: url
-    });
-    }
-
-    let fetchUrl = DEVELOPMENT ? '/mock.gitcoin.co.json' :
-      BOUNTIES_BASE_URL + 'idx_status=open&order_by=web3_created&network=mainnet';
     fetch(fetchUrl)
       .then(res => res.json())
       .then(data => {
@@ -65,9 +49,27 @@ export class History extends Component {
           loading: false
         });
       })
-      .catch((e) => {
-        this.setState({fetchError: 'Error: Could not reach api: ' + e});
-      });
+      .then(() => {
+        if (isOnGitHubcom && isOnRepo) {
+          var repo = url.split('/')[4];
+          this.filterBounties(repo);
+        }
+
+        if (keyword) {
+          this.setState({keyword});
+          this.filterBounties(keyword);
+        }
+
+      if(localStorage['githubusername']) {
+        this.setState({
+          githubUsername: localStorage['githubusername'],
+          browserLocation: url
+        });
+      }
+    })
+    .catch((e) => {
+      this.setState({fetchError: 'Error: Could not reach api: ' + e});
+    });
   }
 
   handleClick(e) {

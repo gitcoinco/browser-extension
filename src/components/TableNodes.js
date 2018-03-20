@@ -7,7 +7,7 @@ export function TableNodes({bounties, loading}) {
     return (
       <tbody>
         <tr>
-          <td col='4'>Loading...</td>
+          <td colspan='6'>Loading...</td>
         </tr>
       </tbody>
     );
@@ -16,7 +16,7 @@ export function TableNodes({bounties, loading}) {
     return (
       <tbody>
         <tr>
-          <td col='4'>No Bounties Found</td>
+          <td colspan='6'>No Bounties Found</td>
         </tr>
       </tbody>
     );
