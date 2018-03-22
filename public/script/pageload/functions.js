@@ -68,6 +68,24 @@ getBountiesForKeyword = function(keyword, callback) {
   xmlHttp.send( null );
 }
 
+const buttonStyle = `
+position: relative;
+background: green;
+color: white;
+top: 5px;
+display: inline-flex;
+padding: 0.15em 4px;
+font-size: 12px;
+font-weight: 600;
+line-height: 15px;
+color: #fff;
+border-radius: 2px;
+box-shadow: inset 0 -1px 0 rgba(27,31,35,0.12);
+height: 20px;
+align-items: center;
+text-decoration: none;
+`;
+
 injectGetAllBountiesOnIssuesPage = function(){
         var issue_nodes = document.getElementsByClassName('link-gray-dark');
         // console.log('injecting on issue page');
@@ -88,10 +106,7 @@ injectGetAllBountiesOnIssuesPage = function(){
                 bounty_badge.href = bounty_url;
                 gitcoin_logo.src = "https://avatars1.githubusercontent.com/u/30044474?v=4";
                 gitcoin_logo.setAttribute("style", "width: 16px;")
-                bounty_badge.setAttribute("style", `background: green;color: white; top: 9 right: 155px; display: inline-block; padding: 3px 4px;
-                  font-size: 12px; font-weight: 600; line-height: 1; color: #fff; border-radius: 2px; display: inline-flex;
-                  box-shadow: inset 0 -1px 0 rgba(27,31,35,0.12); flex-direction: row; flex-wrap: wrap; height: 22px; align-items: center;
-                  justify-content: center; cursor: pointer`);
+                bounty_badge.setAttribute("style", buttonStyle);
                 if (bounty_status === "open") {
                   var text = document.createTextNode("Open · $" + bounty_value);
                 } else if (bounty_status === "claimed") {
@@ -129,10 +144,7 @@ injectGetAllBountiesOnIssueBoard = function() {
           bounty_badge.href = bounty_url;
           gitcoin_logo.src = "https://avatars1.githubusercontent.com/u/30044474?v=4";
           gitcoin_logo.setAttribute("style", "width: 16px;")
-          bounty_badge.setAttribute("style", `background: green;color: white; top: 9 right: 155px; display: inline-block; padding: 3px 4px;
-            font-size: 12px; font-weight: 600; line-height: 1; color: #fff; border-radius: 2px; display: inline-flex;
-            box-shadow: inset 0 -1px 0 rgba(27,31,35,0.12); flex-direction: row; flex-wrap: wrap; height: 22px; align-items: center;
-            justify-content: center; cursor: pointer`);
+          bounty_badge.setAttribute("style", buttonStyle);
           if (issue_nodes[i].nextSibling === null) {
             if (bounty_status === "open") {
               var text = document.createTextNode("Open · $" + bounty_value);
