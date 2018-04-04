@@ -4,13 +4,13 @@
 
 Gitcoin pushes Open Source Forward.  Learn more at [https://gitcoin.co](https://gitcoin.co)
 
-[Star](https://github.com/gitcoinco/chrome_ext/stargazers) and [watch](https://github.com/gitcoinco/chrome_ext/watchers) this github repository to stay up to date, we're pushing new code several times per week!
+[Star](https://github.com/gitcoinco/browser-extension/stargazers) and [watch](https://github.com/gitcoinco/browser-extension/watchers) this github repository to stay up to date, we're pushing new code several times per week!
 
-# Chrome Extension
+# Browser Extension
 
 ## Get It Today
 
-The Chrome extension is live on the Google Chrome Store.  [Get it here](https://gitcoin.co/extension).
+The Browser extension is live on the Google Chrome Store.  [Get it here](https://gitcoin.co/extension).
 
 ## What it Do
 
@@ -61,5 +61,5 @@ The Chrome extension is live on the Google Chrome Store.  [Get it here](https://
 
 
 <!-- Google Analytics -->
-<img src='https://ga-beacon.appspot.com/UA-102304388-1/gitcoinco/chrome_ext' style='width:1px; height:1px;' >
+<img src='https://ga-beacon.appspot.com/UA-102304388-1/gitcoinco/browser-extension' style='width:1px; height:1px;' >
 
