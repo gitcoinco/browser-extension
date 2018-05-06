@@ -26,7 +26,7 @@ The Browser extension is live on the Google Chrome Store.  [Get it here](https:/
 
 <img src='readme/fund.png'>
 
-### Tip Users Direclty on Github
+### Tip Users Directly on Github
 
 <img src='readme/tip.png'>
 
