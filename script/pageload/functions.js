@@ -16,7 +16,7 @@ var insertAfter = function(newNode, referenceNode) {
 getAllBounties = function(callback){
   var bounties_api_url = 'https://gitcoin.co/api/v0.1/bounties/?idx_status=open&network=mainnet&order_by=-web3_created';
   var xmlHttp = new XMLHttpRequest();
-  xmlHttp.open( "GET", bounties_api_url, true ); // false for asynchronous request
+  xmlHttp.open( "GET", bounties_api_url, true ); // true for asynchronous request
   xmlHttp.onload = function (e) {
     if (xmlHttp.readyState === 4) {
       if (xmlHttp.status === 200) {
