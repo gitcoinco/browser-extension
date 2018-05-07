@@ -12,7 +12,7 @@ Gitcoin pushes Open Source Forward.  Learn more at [https://gitcoin.co](https://
 
 The Browser extension is live on the Google Chrome Store.  [Get it here](https://gitcoin.co/extension).
 
-## What it Do
+## What it does
 
 ### Browse Work Directly on Github
 
