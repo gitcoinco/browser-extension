@@ -33,7 +33,7 @@ export class History extends Component {
 
   componentWillMount() {
     let fetchUrl = DEVELOPMENT ? '/mock.gitcoin.co.json' :
-      BOUNTIES_BASE_URL + 'idx_status=open&order_by=web3_created&network=mainnet';
+      BOUNTIES_BASE_URL + 'idx_status=open&order_by=-web3_created&network=mainnet';
 
     let url = localStorage['browser_location'];
     let keyword = localStorage['keyword'];
@@ -99,7 +99,7 @@ export class History extends Component {
     } else {
       let all_bounties = this.state.allBounties;
       for (let i = all_bounties.length - 1; i >= 0; i--) {
-        let bounty_keywords = all_bounties[i].metadata.issueKeywords.toLowerCase();
+        let bounty_keywords = (all_bounties[i].metadata && all_bounties[i].metadata.issueKeywords) ? all_bounties[i].metadata.issueKeywords.toLowerCase() : '';
         let bounty_title = all_bounties[i].title.toLowerCase();
         let do_keywords_contain = bounty_keywords.indexOf(keyword) !== -1;
         let does_title_contain = bounty_title.indexOf(keyword) !== -1;
