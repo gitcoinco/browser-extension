@@ -16,7 +16,7 @@ var body = function(url) {
     var isOnIssuePage = url.indexOf('/pull/') !== -1 || url.indexOf('/issue/') !== -1 || url.indexOf('/issues/') !== -1;
     var isOnIssuesPage = url.indexOf('/issues') !== -1;
     var isAlreadyGitcoinBounty = document.getElementsByClassName('gitcoin_bounty').length >= 1;
-    var isOnIssueBoard = isOnGitHub && url.indexOf('boards') !== -1;
+    var isOnIssueBoard = url.indexOf('boards') !== -1;
 
     // Location | User Profile
     if(isOnUserProfile && !isAlreadyGitcoinBounty ) {
