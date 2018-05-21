@@ -1,8 +1,8 @@
 var isweb3 = function(){
-    return localStorage['isweb3'];
+    return localStorage['isweb3'] != undefined && localStorage['isweb3'] == 'true';
 }
 var isweb3unlocked = function(){
-    return localStorage['web3accountslength'] != 0;
+    return localStorage['web3accountslength'] != undefined && localStorage['web3accountslength'] != 0;
 }
 var web3account = function(){
     return localStorage['web3account'];
@@ -83,6 +83,9 @@ getAllBounties = function(){
 }
 
 var limitStr = function(str,len){
+    if (!str) {
+        return;
+    }
     if(str.length < len){
         return str;
     }
