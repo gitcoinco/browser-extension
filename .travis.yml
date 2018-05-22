@@ -1,0 +1,21 @@
+language: node_js
+node_js:
+  - "8"
+
+before_install:
+
+install:
+  - npm install
+
+script:
+# your build process
+  - npm test
+
+branches:
+  only:
+# the source branch
+    - master
+
+cache:
+  directories:
+    - node_modules
