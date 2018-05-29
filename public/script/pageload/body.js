@@ -27,8 +27,7 @@ var body = function(url) {
     // Location | Issue Page
     if (isOnIssuePage && !isAlreadyGitcoinBounty) {
       // console.log(isAlreadyGitcoinBounty);
-      addButtonToIssuePage();
-      addBountyInfoToIssuePage(url);
+      addButtonToIssuePage(url);
       injectGetBountyAmount();
     } else if (isOnRepo) {
       var repoUrl = document.location.href.split('issues')[0].split('pulls')[0];

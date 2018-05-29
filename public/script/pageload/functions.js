@@ -134,22 +134,39 @@ var injectGetAllBountiesOnIssueBoard = async function() {
   }
 }
 
-var addButtonToIssuePage = function(){
+var addButtonToIssuePage = async function(url){
     var element = document.getElementsByClassName('issues-listing')[0];
     var bounty_anchor = document.createElement("A");
     var gitcoin_logo = document.createElement("img");
-    bounty_anchor.href = "https://gitcoin.co/funding/new?url=" + document.location.href;
     gitcoin_logo.src = "https://avatars1.githubusercontent.com/u/30044474?v=4";
     gitcoin_logo.setAttribute("style", "width: 22px;  vertical-align: middle; margin-top: -5px;");
     bounty_anchor.className += "btn btn-sm btn-primary js-details-target gitcoin_bounty";
     bounty_anchor.setAttribute("style", "position: absolute; top: 40px; right: 0;");
     bounty_anchor.append(gitcoin_logo);
+
+    let all_bounties = await getBountiesForRepo(url);
+    if (all_bounties.length > 0) {
+      bounty_anchor.href = `https://gitcoin.co/funding/details?url=${url}`;
+      var bounty_eth_value = all_bounties[0].value_true;
+      var bounty_usdt_value = all_bounties[0].value_in_usdt;
+      var bounty_status = all_bounties[0].status;
+      var bounty_text_node;
+      if (bounty_status === "open") {
+        bounty_text_node = document.createTextNode(`Claim issue · $${bounty_usdt_value}`);
+      } else if (bounty_status === "fulfilled") {
+        bounty_text_node = document.createTextNode(`Fulfilled issue · $${bounty_usdt_value}`);
+      } else {
+        bounty_text_node = document.createTextNode(`Claimed issue · $${bounty_usdt_value}`);
+      }
+    } else {
+      bounty_anchor.href = `https://gitcoin.co/funding/new?url=${document.location.href}`;
+      bounty_text_node = document.createTextNode("Fund Issue");
+    }
+    bounty_anchor.appendChild(bounty_text_node);
     element.appendChild(bounty_anchor);
-    var text = document.createTextNode("Fund Issue");
-    bounty_anchor.appendChild(text);
 }
 
-var addButtonToUserPage = function(){
+var addButtonToUserPage = function() {
     var element = document.getElementsByClassName('vcard-names')[0];
     var tip_anchor = document.createElement("A");
     var tip_anchor_text = document.createElement("span");
@@ -164,26 +181,6 @@ var addButtonToUserPage = function(){
     tip_anchor_text.appendChild(text);
     tip_anchor.appendChild(tip_anchor_text);
     element.appendChild(tip_anchor);
-}
-
-var addBountyInfoToIssuePage = async function(url) {
-  let all_bounties = await getBountiesForRepo(url);
-  let bounty_anchor = document.getElementsByClassName('gitcoin_bounty')[0];
-  bounty_anchor.href = "https://gitcoin.co/funding/details?url=" + url;
-  if (all_bounties.length > 0) {
-    var bounty_eth_value = all_bounties[0].value_true;
-    var bounty_usdt_value = all_bounties[0].value_in_usdt;
-    var bounty_status = all_bounties[0].status;
-    if (bounty_status === "open") {
-      bounty_anchor.textContent = `Claim issue · $${bounty_usdt_value}`;
-    } else if (bounty_status === "fulfilled") {
-      bounty_anchor.textContent = `Fulfilled issue · $${bounty_usdt_value}`;
-    } else {
-      bounty_anchor.textContent = `Claimed issue · $${bounty_usdt_value}`;
-    }
-  } else {
-    bounty_anchor.textContent = `Fund issue`;
-  }
 }
 
 var humanize = function(amount){
