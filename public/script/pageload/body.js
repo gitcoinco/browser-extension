@@ -2,7 +2,7 @@
 
 //injects various information on the page
 var body = function(url) {
-    var isOnGitHubcom = url.indexOf('://github.com') !== -1 && url.indexOf('://github.com') < 15;
+    var isOnGitHubcom = url.indexOf('://github.com') !== -1;
     var isOnGitHubEnterprise = document.getElementsByClassName('enterprise').length >= 1 && document.getElementsByClassName('header-logo-invertocat').length >= 1;
     var isOnGitHub = isOnGitHubEnterprise || isOnGitHubcom;
 
