@@ -118,6 +118,7 @@ export class History extends Component {
 
   render() {
     let href = this.state.githubusername ? `https://gitcoin.co/funding/new?&user=${this.state.githubUsername}&source=${this.state.browserLocation}` : 'https://gitcoin.co/funding/new';
+  let viewMore = this.state.bounties.length > 0 ? (<a target='new' href='https://gitcoin.co/explorer' rel='noopener noreferrer'>View More &gt;&gt; </a>) : '';
     return this.state.fetchError ? (<span>{this.state.fetchError}</span>) : (
       <div id='history'>
         <div id='bounty' style={bountyStyle}>
@@ -139,7 +140,7 @@ export class History extends Component {
           </thead>
           <TableNodes {...this.state} />
         </table>
-        <a target='new' href='https://gitcoin.co/explorer' rel='noopener noreferrer'>View More &gt;&gt; </a>
+        {viewMore}
       </div>
     );
   }
