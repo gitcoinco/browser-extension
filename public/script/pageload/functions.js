@@ -75,6 +75,7 @@ var injectGetAllBountiesOnIssuesPage = async function() {
         var bounty_badge_text = document.createElement("span");
         var gitcoin_logo = document.createElement("img");
         bounty_badge.href = bounty_url;
+        bounty_badge.target = "_blank";
         gitcoin_logo.src = "https://avatars1.githubusercontent.com/u/30044474?v=4";
         gitcoin_logo.setAttribute("style", "width: 16px;")
         bounty_badge.setAttribute("style", buttonStyle);
@@ -112,6 +113,7 @@ var injectGetAllBountiesOnIssueBoard = async function() {
         var bounty_badge_text = document.createElement("span");
         var gitcoin_logo = document.createElement("img");
         bounty_badge.href = bounty_url;
+        bounty_badge.target = "_blank";
         gitcoin_logo.src = "https://avatars1.githubusercontent.com/u/30044474?v=4";
         gitcoin_logo.setAttribute("style", "width: 16px;")
         bounty_badge.setAttribute("style", buttonStyle);
