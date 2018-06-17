@@ -11,6 +11,6 @@ chrome.runtime.onMessage.addListener(
     function(request, sender, sendResponse){
         for (var key in request) {
          localStorage[key] = request[key];
-        }      
+        }
     }
 );

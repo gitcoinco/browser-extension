@@ -1,5 +1,5 @@
 
-//inject the ability to respond 
+//inject the ability to respond
 injectScript('function respond_to_ext(type, response) { window.postMessage({ type: type, text: response}, "*"); }');
 
 //inject listening callbacks
@@ -46,7 +46,7 @@ window.addEventListener("message", function(event) {
   // We only accept messages from ourselves
   if (event.source != window)
     return;
-    
+
     //run callbacks from event
     for (var i = 0; i < callbacks.length; i++){
         var callback = callbacks[i];
@@ -54,5 +54,3 @@ window.addEventListener("message", function(event) {
     }
 
 }, false);
-
-injectWeb3Context();

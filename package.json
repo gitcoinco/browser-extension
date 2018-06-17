@@ -1,0 +1,22 @@
+{
+  "name": "web_ext",
+  "description": "This Extension allows users to find new & interesting work, right where you work, on github.com.",
+  "version": "1.0.0",
+  "private": true,
+  "dependencies": {
+    "bootstrap": "^4.1.1",
+    "react": "^16.3.2",
+    "react-dom": "^16.3.2"
+  },
+  "devDependencies": {
+    "jest-localstorage-mock": "^2.2.0",
+    "react-scripts": "1.1.4",
+    "react-test-renderer": "^16.3.2"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test --env=jsdom",
+    "eject": "react-scripts eject"
+  }
+}

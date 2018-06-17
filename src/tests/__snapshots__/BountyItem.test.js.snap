@@ -1,0 +1,44 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`render correctly 1`] = `
+<table>
+  <tbody>
+    <tr>
+      <td>
+        <img
+          alt=""
+          src="src=\\"https://avatars1.githubusercontent.com/u/30044474?v=4"
+          style={
+            Object {
+              "height": "20px",
+              "width": "20px",
+            }
+          }
+        />
+      </td>
+      <td>
+        1 month ago
+      </td>
+      <td>
+        0.06 ETH
+      </td>
+      <td>
+        Increase Code Coverage by 5%
+      </td>
+      <td>
+        open
+      </td>
+      <td>
+        <a
+          className="target"
+          href="href=\\"https://github.com/gitcoinco/web/issues/408"
+          rel="noopener noreferrer"
+          target="_blank"
+        >
+          View &gt;&gt;
+        </a>
+      </td>
+    </tr>
+  </tbody>
+</table>
+`;

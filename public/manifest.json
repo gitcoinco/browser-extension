@@ -1,0 +1,35 @@
+{
+  "manifest_version": 2,
+  "name": "Gitcoin",
+  "author": "Gitcoin.co",
+  "version": "0.906",
+  "description": "This Extension allows users to find new & interesting work, right where you work, on github.com.",
+  "icons": {
+    "128": "images/icon_128.png"
+  },
+  "homepage_url": "https://gitcoin.co/",
+  "permissions": [
+    "activeTab",
+    "https://ajax.googleapis.com/",
+    "https://gitcoin.co/",
+    "https://github.com/"
+  ],
+  "browser_action": {
+    "default_icon": "images/icon.png",
+    "default_popup": "index.html"
+  },
+  "content_scripts": [
+    {
+      "matches": ["https://github.com/*"],
+      "js": ["script/pageload/functions.js", "script/pageload/body.js", "script/pageload/callbacks.js"],
+      "run_at": "document_end"
+    }
+  ],
+  "background": {
+    "scripts":["script/background.js"],
+    "persistent": false
+  },
+  "storage": {
+    "managed_schema": "schema.json"
+  }
+}
