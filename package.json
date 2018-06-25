@@ -18,6 +18,7 @@
     "start": "react-scripts start",
     "prebuild": "",
     "build": "react-scripts build",
+    "buildFirefox": "npm run build && npx web-ext build -s build/",
     "test": "react-scripts test --env=jsdom",
     "extlint": "npm run build && npx web-ext lint -s build/"
   }
