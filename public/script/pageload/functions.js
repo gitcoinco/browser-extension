@@ -16,22 +16,19 @@ var insertAfter = function(newNode, referenceNode) {
 var getAllBounties = async function() {
   let bounties_api_url = 'https://gitcoin.co/api/v0.1/bounties/?idx_status=open&network=mainnet&order_by=-web3_created';
   return await fetch(bounties_api_url)
-    .then(res => res.json())
-    .catch(console.error);
+    .then(res => res.json().catch(console.error));
 }
 
 var getBountiesForRepo = async function(github_url) {
   let bounties_api_url = `https://gitcoin.co/api/v0.1/bounties/?idx_status=open&network=mainnet&github_url=${github_url}`;
   return await fetch(bounties_api_url)
-    .then(res => res.json())
-    .catch(console.error);
+    .then(res => res.json().catch(console.error));
 }
 
 var getBountiesForKeyword = async function(keyword) {
   let bounties_api_url = "https://gitcoin.co/api/v0.1/bounties/?order_by=web3_created&network=mainnet&idx_status=open";
   let all_bounties = await fetch(bounties_api_url)
-      .then(res => res.json())
-      .catch(console.error);
+      .then(res => res.json().catch(console.error));
 
   let matching_bounties = [];
   for (var i = all_bounties.length - 1; i >= 0; i--) {
@@ -68,6 +65,7 @@ var injectGetAllBountiesOnIssuesPage = async function() {
   let issue_nodes = document.getElementsByClassName('link-gray-dark');
   // console.log('injecting on issue page');
   let all_bounties = await getAllBounties();
+  if(all_bounties)
   for (var i = issue_nodes.length - 1; i >= 0; i--) {
     var issue_name = issue_nodes[i].innerHTML.trim()
     for (var j = all_bounties.length - 1; j >= 0; j--) {
