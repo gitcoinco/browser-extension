@@ -15,17 +15,21 @@ var insertAfter = function(newNode, referenceNode) {
 
 var getAllBounties = async function() {
   let bounties_api_url = 'https://gitcoin.co/api/v0.1/bounties/?idx_status=open&network=mainnet&order_by=-web3_created';
-  return await fetch(bounties_api_url).then(res => res.json());
+  return await fetch(bounties_api_url)
+    .then(res => res.json().catch(console.error));
 }
 
 var getBountiesForRepo = async function(github_url) {
   let bounties_api_url = `https://gitcoin.co/api/v0.1/bounties/?idx_status=open&network=mainnet&github_url=${github_url}`;
-  return await fetch(bounties_api_url).then(res => res.json());
+  return await fetch(bounties_api_url)
+    .then(res => res.json().catch(console.error));
 }
 
 var getBountiesForKeyword = async function(keyword) {
   let bounties_api_url = "https://gitcoin.co/api/v0.1/bounties/?order_by=web3_created&network=mainnet&idx_status=open";
-  let all_bounties = await fetch(bounties_api_url).then(res => res.json());
+  let all_bounties = await fetch(bounties_api_url)
+      .then(res => res.json().catch(console.error));
+
   let matching_bounties = [];
   for (var i = all_bounties.length - 1; i >= 0; i--) {
     var bounty_keywords = all_bounties[i].issue_description_text.toLowerCase();
@@ -61,6 +65,7 @@ var injectGetAllBountiesOnIssuesPage = async function() {
   let issue_nodes = document.getElementsByClassName('link-gray-dark');
   // console.log('injecting on issue page');
   let all_bounties = await getAllBounties();
+  if(all_bounties)
   for (var i = issue_nodes.length - 1; i >= 0; i--) {
     var issue_name = issue_nodes[i].innerHTML.trim()
     for (var j = all_bounties.length - 1; j >= 0; j--) {
@@ -137,17 +142,18 @@ var injectGetAllBountiesOnIssueBoard = async function() {
 }
 
 var addButtonToIssuePage = async function(url){
-    var element = document.getElementsByClassName('issues-listing')[0];
+    var element = document.getElementsByClassName('gh-header-actions')[0];
     var bounty_anchor = document.createElement("A");
     var gitcoin_logo = document.createElement("img");
     gitcoin_logo.src = "https://avatars1.githubusercontent.com/u/30044474?v=4";
     gitcoin_logo.setAttribute("style", "width: 22px;  vertical-align: middle; margin-top: -5px;");
-    bounty_anchor.className += "btn btn-sm btn-primary js-details-target gitcoin_bounty";
-    bounty_anchor.setAttribute("style", "position: absolute; top: 40px; right: 0;");
+    bounty_anchor.className += "btn btn-sm btn-primary js-details-target gitcoin_bounty float-right";
+//    bounty_anchor.setAttribute("style", "position: absolute; top: 40px; right: 0;");
     bounty_anchor.append(gitcoin_logo);
+    bounty_anchor.onclick = (event) => event.stopPropagation()
 
     let all_bounties = await getBountiesForRepo(url);
-    if (all_bounties.length > 0) {
+    if (all_bounties && all_bounties.length > 0) {
       bounty_anchor.href = `https://gitcoin.co/funding/details?url=${url}`;
       var bounty_eth_value = all_bounties[0].value_true;
       var bounty_usdt_value = all_bounties[0].value_in_usdt;
