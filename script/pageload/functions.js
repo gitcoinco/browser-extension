@@ -154,14 +154,14 @@ injectGetAllBountiesOnIssueBoard = function() {
 }
 
 var addButtonToIssuePage = function(){
-        var element = document.getElementsByClassName('issues-listing')[0];
+        var element = document.getElementsByClassName('gh-header-actions')[0];
         var bounty_anchor = document.createElement("A");
         var gitcoin_logo = document.createElement("img");
         bounty_anchor.href = "https://gitcoin.co/funding/new?url=" + document.location.href;
         gitcoin_logo.src = "https://avatars1.githubusercontent.com/u/30044474?v=4";
         gitcoin_logo.setAttribute("style", "width: 22px;  vertical-align: middle; margin-top: -5px;");
-        bounty_anchor.className += "btn btn-sm btn-primary js-details-target gitcoin_bounty";
-        bounty_anchor.setAttribute("style", "position: absolute; top: 40px; right: 0;");
+        bounty_anchor.className += "btn btn-sm btn-primary js-details-target gitcoin_bounty float-right";
+        bounty_anchor.onclick = (event) => event.stopPropagation();
         bounty_anchor.append(gitcoin_logo);
         element.appendChild(bounty_anchor);
         var text = document.createTextNode("Fund Issue");
