@@ -2,7 +2,7 @@
 
 This Extension allows users to find new & interesting work, right where you work, on github.com.
 
-# Gitcoin
+# Gitcoin Web Extension
 
 Gitcoin pushes Open Source Forward.  Learn more at [https://gitcoin.co](https://gitcoin.co)
 
@@ -60,6 +60,14 @@ const DEVELOPMENT = true
 That will use mocked json file in `/public/mock.gitcoin.co.json`.
 
 Then debugging the popup page via `yarn start`.
+
+## Web extention lint
+
+run web extention lint via
+
+```
+npm run extlint
+```
 
 ## Test
 

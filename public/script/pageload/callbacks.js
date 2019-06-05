@@ -1,9 +1,10 @@
+var browser = typeof browser !== 'undefined' ? browser : chrome;
 
 //inject the ability to respond
 injectScript('function respond_to_ext(type, response) { window.postMessage({ type: type, text: response}, "*"); }');
 
 //inject listening callbacks
-callbacks = [
+const callbacks = [
     function(event){
         //console.log("Stored " + event.data.type + ', ' + event.data.text);
     },
@@ -13,7 +14,7 @@ callbacks = [
     function(event){
         var msg = {};
         msg[event.data.type]=event.data.text;
-        chrome.runtime.sendMessage(msg);
+        browser.runtime.sendMessage(msg);
     },
     function(event){
         if(event.data.type == 'bountyDetails'){

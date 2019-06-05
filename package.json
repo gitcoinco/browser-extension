@@ -5,8 +5,9 @@
   "private": true,
   "dependencies": {
     "bootstrap": "^4.1.1",
-    "react": "^16.3.2",
-    "react-dom": "^16.3.2"
+    "react": "^16.4.1",
+    "react-dom": "^16.4.1",
+    "web-ext": "^2.7.0"
   },
   "devDependencies": {
     "jest-localstorage-mock": "^2.2.0",
@@ -15,8 +16,10 @@
   },
   "scripts": {
     "start": "react-scripts start",
+    "prebuild": "",
     "build": "react-scripts build",
+    "buildFirefox": "npm run build && npx web-ext build -s build/",
     "test": "react-scripts test --env=jsdom",
-    "eject": "react-scripts eject"
+    "extlint": "npm run build && npx web-ext lint -s build/"
   }
 }

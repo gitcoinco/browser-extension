@@ -1,5 +1,3 @@
-
-
 //injects various information on the page
 var body = function(url) {
     var isOnGitHubcom = url.indexOf('://github.com') !== -1;
